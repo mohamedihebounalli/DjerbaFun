@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X, Waves } from "lucide-react";
+import { Menu, X, Waves, ShieldCheck } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { useAuth } from "@/lib/auth";
 
 export function Navbar() {
   const { t } = useI18n();
+  const { isLoggedIn } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -67,6 +69,21 @@ export function Navbar() {
 
         <div className="ml-auto flex items-center gap-2">
           <LanguageSwitcher />
+
+          {/* Admin shortcut icon */}
+          <Link
+            to="/admin/dashboard"
+            aria-label="Admin panel"
+            title={isLoggedIn ? "Admin dashboard" : "Admin login"}
+            className={cn(
+              "h-8 w-8 rounded-full flex items-center justify-center transition-all",
+              isLoggedIn
+                ? "bg-primary/10 text-primary hover:bg-primary/20"
+                : "text-muted-foreground/40 hover:text-muted-foreground hover:bg-muted",
+            )}
+          >
+            <ShieldCheck className="h-4 w-4" />
+          </Link>
           <Button
             asChild
             size="sm"
