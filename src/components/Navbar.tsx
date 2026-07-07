@@ -43,12 +43,15 @@ export function Navbar() {
       )}
     >
       <div className="container-page flex h-16 items-center gap-4">
-        <Link to="/" className="flex items-center group">
+        <Link to="/" className="flex items-center gap-2.5 group">
           <img
             src={logo}
             alt="Djerba Fun"
             className="h-10 w-auto object-contain"
           />
+          <span className="font-display font-bold text-lg tracking-tight">
+            Djerba<span className="text-accent">Fun</span>
+          </span>
         </Link>
 
 
