@@ -8,11 +8,13 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { useRouterState } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { I18nProvider } from "@/lib/i18n";
 import { ActivitiesProvider } from "@/lib/activities";
+import { AuthProvider } from "@/lib/auth";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingButtons } from "@/components/WhatsAppFAB";
@@ -114,19 +116,23 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { location } = useRouterState();
+  const isAdmin = location.pathname.startsWith("/admin");
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nProvider>
-        <ActivitiesProvider>
-          <TrustTicker />
-          <Navbar />
-          <main className="min-h-[60vh]">
-            <Outlet />
-          </main>
-          <Footer />
-          <FloatingButtons />
-        </ActivitiesProvider>
-      </I18nProvider>
+      <AuthProvider>
+        <I18nProvider>
+          <ActivitiesProvider>
+            {!isAdmin && <TrustTicker />}
+            {!isAdmin && <Navbar />}
+            <main className={isAdmin ? "" : "min-h-[60vh]"}>
+              <Outlet />
+            </main>
+            {!isAdmin && <Footer />}
+            {!isAdmin && <FloatingButtons />}
+          </ActivitiesProvider>
+        </I18nProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
