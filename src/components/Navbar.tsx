@@ -43,16 +43,16 @@ export function Navbar() {
       )}
     >
       <div className="container-page flex h-16 items-center gap-4">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <img
-            src={logo}
-            alt="Djerba Fun"
-            className="h-10 w-auto object-contain"
-          />
-          <span className="font-display font-bold text-lg tracking-tight">
-            Djerba<span className="text-accent">Fun</span>
-          </span>
-        </Link>
+<Link to="/" className="flex items-center gap-3 group">
+  <img
+    src={logo}
+    alt="Djerba Fun"
+    className="h-14 w-auto object-contain" 
+  />
+  <span className="font-display font-bold text-xl tracking-tight">
+    Djerba<span className="text-accent">Fun</span>
+  </span>
+</Link>
 
 
         <nav className="hidden lg:flex items-center gap-1 ml-6">

@@ -79,11 +79,17 @@ function Home() {
         {/* Floating search — desktop overlap */}
         <div className="container-page relative -mt-16 md:-mt-20 pb-10">
           <SearchBar filters={filters} onChange={setFilters} onReset={() => setFilters(DEFAULT_FILTERS)} />
-          {(filters.q || filters.type !== "any" || filters.duration !== "any" || filters.maxPrice < 300) && (
-            <div className="mt-3 text-sm text-muted-foreground">
-              {visibleActivities.length} {t("search.results")}
-            </div>
-          )}
+          
+          {/* Fix: Kept in DOM with visibility toggle to reserve space and prevent bg image layout shifting */}
+          <div 
+            className={`mt-3 text-sm text-muted-foreground transition-opacity duration-150 ${
+              (filters.q || filters.type !== "any" || filters.duration !== "any" || filters.maxPrice < 300) 
+                ? "opacity-100" 
+                : "opacity-0 pointer-events-none select-none"
+            }`}
+          >
+            {visibleActivities.length} {t("search.results")}
+          </div>
         </div>
       </section>
 
