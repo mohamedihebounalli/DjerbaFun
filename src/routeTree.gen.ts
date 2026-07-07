@@ -9,38 +9,135 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WaterActivitiesRouteImport } from './routes/water-activities'
+import { Route as LandActivitiesRouteImport } from './routes/land-activities'
+import { Route as ExcursionsRouteImport } from './routes/excursions'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActivitiesSlugRouteImport } from './routes/activities.$slug'
 
+const WaterActivitiesRoute = WaterActivitiesRouteImport.update({
+  id: '/water-activities',
+  path: '/water-activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandActivitiesRoute = LandActivitiesRouteImport.update({
+  id: '/land-activities',
+  path: '/land-activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExcursionsRoute = ExcursionsRouteImport.update({
+  id: '/excursions',
+  path: '/excursions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivitiesSlugRoute = ActivitiesSlugRouteImport.update({
+  id: '/activities/$slug',
+  path: '/activities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/excursions': typeof ExcursionsRoute
+  '/land-activities': typeof LandActivitiesRoute
+  '/water-activities': typeof WaterActivitiesRoute
+  '/activities/$slug': typeof ActivitiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/excursions': typeof ExcursionsRoute
+  '/land-activities': typeof LandActivitiesRoute
+  '/water-activities': typeof WaterActivitiesRoute
+  '/activities/$slug': typeof ActivitiesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/excursions': typeof ExcursionsRoute
+  '/land-activities': typeof LandActivitiesRoute
+  '/water-activities': typeof WaterActivitiesRoute
+  '/activities/$slug': typeof ActivitiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/excursions'
+    | '/land-activities'
+    | '/water-activities'
+    | '/activities/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/excursions'
+    | '/land-activities'
+    | '/water-activities'
+    | '/activities/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/excursions'
+    | '/land-activities'
+    | '/water-activities'
+    | '/activities/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  ExcursionsRoute: typeof ExcursionsRoute
+  LandActivitiesRoute: typeof LandActivitiesRoute
+  WaterActivitiesRoute: typeof WaterActivitiesRoute
+  ActivitiesSlugRoute: typeof ActivitiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/water-activities': {
+      id: '/water-activities'
+      path: '/water-activities'
+      fullPath: '/water-activities'
+      preLoaderRoute: typeof WaterActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/land-activities': {
+      id: '/land-activities'
+      path: '/land-activities'
+      fullPath: '/land-activities'
+      preLoaderRoute: typeof LandActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/excursions': {
+      id: '/excursions'
+      path: '/excursions'
+      fullPath: '/excursions'
+      preLoaderRoute: typeof ExcursionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +145,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activities/$slug': {
+      id: '/activities/$slug'
+      path: '/activities/$slug'
+      fullPath: '/activities/$slug'
+      preLoaderRoute: typeof ActivitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  ExcursionsRoute: ExcursionsRoute,
+  LandActivitiesRoute: LandActivitiesRoute,
+  WaterActivitiesRoute: WaterActivitiesRoute,
+  ActivitiesSlugRoute: ActivitiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
