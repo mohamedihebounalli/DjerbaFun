@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X, Waves, ShieldCheck } from "lucide-react";
+import { Menu, X, ShieldCheck } from "lucide-react";
+
+import logo from "@/assets/DjerbaFunLogo.png";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -42,11 +44,11 @@ export function Navbar() {
     >
       <div className="container-page flex h-16 items-center gap-4">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-hero-gradient text-white shadow-soft">
-            <Waves className="h-5 w-5" />
+          <span className="grid h-9 w-9 place-items-center rounded-xl overflow-hidden bg-white shadow-soft border border-border">
+            <img src={logo} alt="Djerba Fun logo" className="h-full w-full object-contain" />
           </span>
           <span className="font-display font-bold text-lg tracking-tight">
-            Djerba<span className="text-accent"> Fun</span>
+            Djerba<span className="text-accent">Fun</span>
           </span>
         </Link>
 
