@@ -45,30 +45,27 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer"
+              <a href="https://www.instagram.com/water_sports_b20_djerba" target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 hover:text-accent">
                 <Instagram className="h-4 w-4" /> Instagram
-              </a>
-            </li>
-            <li>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 hover:text-accent">
-                <Facebook className="h-4 w-4" /> Facebook
-              </a>
-            </li>
-            <li>
-              <a href="https://maps.google.com/?q=Djerba" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 hover:text-accent">
-                <MapPin className="h-4 w-4" /> Google Maps
               </a>
             </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">
-        <div className="container-page py-5 text-xs text-primary-foreground/70 flex flex-wrap items-center justify-between gap-2">
-          <span>© {new Date().getFullYear()} Djerba Fun. {t("footer.rights")}</span>
-          <span>Made with ♥ in Djerba, Tunisia.</span>
+        <div className="container-page py-5 text-xs text-primary-foreground/70 flex justify-center text-center">
+          <span className="font-display uppercase tracking-widest">
+            © {new Date().getFullYear()} Website Developed by{" "}
+            <a 
+              href="https://www.instagram.com/houbarunner/" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="text-accent font-bold hover:underline"
+            >
+              HoubaRunner
+            </a>
+          </span>
         </div>
       </div>
     </footer>
