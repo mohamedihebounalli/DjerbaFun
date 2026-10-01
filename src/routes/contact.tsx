@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
-  head: () => ({ meta: [{ title: "Contact — Djerba Fun" }] }),
+  head: () => ({ meta: [{ title: "Contact — Island Experience" }] }),
 });
 
 function ContactPage() {

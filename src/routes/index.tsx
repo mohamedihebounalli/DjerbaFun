@@ -18,9 +18,9 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Djerba Fun — Book Water, Land & Sahara Activities in Djerba" },
+      { title: "Island Experience — Book Water, Land & Sahara Activities in Djerba" },
       { name: "description", content: "Jet ski, parasailing, quad, camel rides, boat trips and Sahara excursions in Djerba. Instant WhatsApp booking, no online payment." },
-      { property: "og:title", content: "Djerba Fun — Activities in Djerba" },
+      { property: "og:title", content: "Island Experience — Activities in Djerba" },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],

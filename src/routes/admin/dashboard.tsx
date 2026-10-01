@@ -25,7 +25,7 @@ import { Badge } from "@/components/ui/badge";
 
 export const Route = createFileRoute("/admin/dashboard")({
   component: AdminDashboard,
-  head: () => ({ meta: [{ title: "Admin Dashboard — Djerba Fun" }] }),
+  head: () => ({ meta: [{ title: "Admin Dashboard — Island Experience" }] }),
 });
 
 const CATEGORY_ICON = {
@@ -134,7 +134,7 @@ function AdminDashboard() {
               <LayoutDashboard className="h-4 w-4 text-primary-foreground" />
             </div>
             <div>
-              <p className="font-display text-sm font-bold">Djerba Fun</p>
+              <p className="font-display text-sm font-bold">Island Experience</p>
               <p className="text-xs text-muted-foreground">Back-Office v1.0</p>
             </div>
           </div>

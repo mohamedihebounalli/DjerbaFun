@@ -18,7 +18,7 @@ import { ExcursionTimeline } from "@/components/ExcursionTimeline";
 
 export const Route = createFileRoute("/activities/$slug")({
   component: ActivityDetail,
-  head: () => ({ meta: [{ title: "Activity — Djerba Fun" }] }),
+  head: () => ({ meta: [{ title: "Activity — Island Experience" }] }),
 });
 
 function MetaBadge({

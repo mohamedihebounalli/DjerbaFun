@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/admin/login")({
   component: AdminLogin,
   head: () => ({
-    meta: [{ title: "Admin Login — Djerba Fun" }],
+    meta: [{ title: "Admin Login — Island Experience" }],
   }),
 });
 
@@ -60,7 +60,7 @@ function AdminLogin() {
               <Lock className="h-6 w-6 text-primary" />
             </div>
             <h1 className="font-display text-2xl font-extrabold text-white">Admin Portal</h1>
-            <p className="text-sm text-white/50">Djerba Fun Back-Office</p>
+            <p className="text-sm text-white/50">Island Experience Back-Office</p>
           </div>
 
           {/* Error alert */}
@@ -136,7 +136,7 @@ function AdminLogin() {
           </form>
 
           <p className="text-center text-xs text-white/30">
-            © {new Date().getFullYear()} Djerba Fun · Secure Admin Area
+            © {new Date().getFullYear()} Island Experience · Secure Admin Area
           </p>
         </div>
       </div>

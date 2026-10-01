@@ -79,13 +79,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Djerba Fun — Book the Best Activities in Djerba" },
+      { title: "Island Experience — Book the Best Activities in Djerba" },
       { name: "description", content: "Jet ski, quad, boat trips, camel rides and Sahara excursions in Djerba. Instant WhatsApp booking, no online payment." },
-      { name: "author", content: "Djerba Fun" },
-      { property: "og:title", content: "Djerba Fun — Activities in Djerba" },
+      { name: "author", content: "Island Experience" },
+      { property: "og:title", content: "Island Experience — Activities in Djerba" },
       { property: "og:description", content: "Water sports, land adventures and excursions across Djerba island." },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Djerba Fun" },
+      { property: "og:site_name", content: "Island Experience" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [

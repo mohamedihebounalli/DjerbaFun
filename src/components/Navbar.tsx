@@ -46,11 +46,11 @@ export function Navbar() {
 <Link to="/" className="flex items-center gap-3 group">
   <img
     src={logo}
-    alt="Djerba Fun"
+    alt="Island Experience"
     className="h-14 w-auto object-contain" 
   />
   <span className="font-display font-bold text-xl tracking-tight">
-    Djerba<span className="text-accent">Fun</span>
+    Island<span className="text-accent">Experience</span>
   </span>
 </Link>
 

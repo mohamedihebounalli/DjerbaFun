@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "21695776339"; // Djerba Fun booking line
+export const WHATSAPP_NUMBER = "21695776339"; // Island Experience booking line
 
 export interface BookingParams {
   activity: string;
