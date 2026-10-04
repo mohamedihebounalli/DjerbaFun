@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState, useEffect, useCallback } from "react";
 import {
   ArrowRight, MessageCircle, Wallet, ShieldCheck, Users, Star,
-  Waves, Mountain, Bus, Quote, ChevronDown, ChevronLeft, ChevronRight, ExternalLink,
+  Waves, Mountain, Bus, Quote, ChevronDown, ChevronLeft, ChevronRight,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-djerba.jpg";
@@ -161,17 +161,6 @@ function Home() {
             </p>
           </div>
           <ReviewsCarousel />
-          <div className="mt-10 text-center">
-            <a
-              href="https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card px-6 py-3 text-sm font-semibold text-primary shadow-soft transition hover:bg-primary hover:text-primary-foreground"
-            >
-              <ExternalLink className="h-4 w-4" />
-              Consulter tous nos avis sur Google Maps
-            </a>
-          </div>
         </div>
       </section>
 
@@ -290,6 +279,7 @@ const REVIEWS: { author: string; rating: number; comment: string; tag?: string }
 
 // ─── Reviews Carousel ─────────────────────────────────────────────────────────
 const CARDS_PER_PAGE_DESKTOP = 3;
+const MAPS_URL = "https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/";
 
 function ReviewsCarousel() {
   const [page, setPage] = useState(0);
@@ -307,6 +297,7 @@ function ReviewsCarousel() {
   const perPage = isMobile ? 1 : CARDS_PER_PAGE_DESKTOP;
   const totalPages = Math.ceil(REVIEWS.length / perPage);
 
+  // Infinite loop: always wraps around
   const prev = useCallback(() => setPage((p) => (p - 1 + totalPages) % totalPages), [totalPages]);
   const next = useCallback(() => setPage((p) => (p + 1) % totalPages), [totalPages]);
 
@@ -326,9 +317,12 @@ function ReviewsCarousel() {
       {/* Cards */}
       <div className="grid gap-5 md:grid-cols-3">
         {slice.map((r, i) => (
-          <figure
+          <a
             key={`${page}-${i}`}
-            className="rounded-2xl bg-card border border-border p-6 shadow-soft flex flex-col"
+            href={MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group rounded-2xl bg-card border border-border p-6 shadow-soft flex flex-col cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30"
           >
             {/* Stars */}
             <div className="flex items-center gap-1 text-accent">
@@ -343,7 +337,7 @@ function ReviewsCarousel() {
               "{r.comment}"
             </blockquote>
             {/* Footer */}
-            <figcaption className="mt-5 flex items-center gap-3">
+            <div className="mt-5 flex items-center gap-3">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-semibold uppercase text-sm">
                 {r.author.charAt(0)}
               </span>
@@ -367,46 +361,27 @@ function ReviewsCarousel() {
                   )}
                 </div>
               </div>
-            </figcaption>
-          </figure>
+            </div>
+          </a>
         ))}
       </div>
 
-      {/* Navigation */}
-      <div className="mt-8 flex flex-col items-center gap-4">
-        {/* Prev / Next buttons */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={prev}
-            aria-label="Avis précédents"
-            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <span className="text-sm text-muted-foreground tabular-nums">
-            {page + 1} / {totalPages}
-          </span>
-          <button
-            onClick={next}
-            aria-label="Avis suivants"
-            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
-        {/* Dot indicators — condensed to max 10 for readability */}
-        <div className="flex gap-1.5 flex-wrap justify-center max-w-xs">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setPage(i)}
-              aria-label={`Page ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all ${
-                i === page ? "w-6 bg-primary" : "w-1.5 bg-border hover:bg-primary/40"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Navigation — arrows only, no counter, no dots */}
+      <div className="mt-8 flex items-center justify-center gap-4">
+        <button
+          onClick={prev}
+          aria-label="Avis précédents"
+          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={next}
+          aria-label="Avis suivants"
+          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
       </div>
     </div>
   );
