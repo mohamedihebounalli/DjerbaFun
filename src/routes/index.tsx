@@ -156,7 +156,7 @@ function Home() {
               <span className="flex gap-0.5 text-accent">
                 {Array.from({ length: 5 }).map((_, k) => <Star key={k} className="h-3.5 w-3.5 fill-current" />)}
               </span>
-              <span className="font-semibold text-foreground">5.0 sur 5</span>
+              <span className="font-semibold text-foreground">4.8 sur 5</span>
               — Basé sur les avis Google vérifiés
             </p>
           </div>
