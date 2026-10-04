@@ -274,12 +274,11 @@ const REVIEWS: { author: string; rating: number; comment: string; tag?: string }
   { author: "Ce Le KLTS", rating: 5, comment: "Superbe excursion en mer en compagnie de dauphins .🐬 Parachute ascensionnel à faire absolument ! Contact très agréable 👍" },
   { author: "Chloe Charlet", rating: 5, comment: "Ma première fois en jet ski, c'était fabuleux,le personnel très gentil ! Je recommande !" },
   { author: "Kamel Bourguiba", rating: 5, comment: "Une base nautique impeccable avec une bonne ambiance, merciii à la patronne qui déchire, merci aussi au pilote qui nous a fais découvrir des magnifiques endroit 🙏🏻" },
-  { author: "Sophie Pereira", rating: 5, comment: "Sortie en bateau au top ! Les dauphins étaient au rendez-vous, c'était magnifique ! Et une équipe géniale… je vous conseille vraiment cette base nautique 👍" },
 ];
 
 // ─── Reviews Carousel ─────────────────────────────────────────────────────────
 const CARDS_PER_PAGE_DESKTOP = 3;
-const MAPS_URL = "https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/";
+const MAPS_URL = "https://www.google.com/maps/place/Water+Sports+-+B20/@33.7637547,11.0245021,1041m/data=!3m1!1e3!4m6!3m5!1s0x13aa971a0d94ba89:0x2b9f88f6dfe0c54c!8m2!3d33.7637547!4d11.0245021!16s%2Fg%2F11hzcvbfft?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D";
 
 function ReviewsCarousel() {
   const [page, setPage] = useState(0);
