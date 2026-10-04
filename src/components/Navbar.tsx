@@ -42,18 +42,17 @@ export function Navbar() {
           : "bg-background/60 backdrop-blur-sm",
       )}
     >
-      <div className="container-page flex h-16 items-center gap-4">
-<Link to="/" className="flex items-center gap-3 group">
-  <img
-    src={logo}
-    alt="Island Experience"
-    className="h-14 w-auto object-contain" 
-  />
-  <span className="font-display font-bold text-xl tracking-tight">
-    Island<span className="text-accent">Experience</span>
-  </span>
-</Link>
-
+      <div className="container-page flex h-16 items-center justify-between gap-2 sm:gap-4 px-4">
+        <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 shrink">
+          <img
+            src={logo}
+            alt="Island Experience"
+            className="h-10 sm:h-14 w-auto object-contain shrink-0" 
+          />
+          <span className="font-display font-bold text-sm xs:text-base sm:text-xl tracking-tight truncate">
+            Island<span className="text-accent">Experience</span>
+          </span>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-1 ml-6">
           {links.map((l) => (
@@ -70,15 +69,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <LanguageSwitcher />
 
-          {/* Admin shortcut icon — always goes to login; login redirects to dashboard on success */}
+          {/* Admin shortcut icon */}
           <Link
             to="/admin/login"
             aria-label="Admin login"
             title="Admin login"
-            className="h-8 w-8 rounded-full flex items-center justify-center text-muted-foreground/40 hover:text-primary hover:bg-primary/10 transition-all"
+            className="h-8 w-8 rounded-full hidden xs:flex items-center justify-center text-muted-foreground/40 hover:text-primary hover:bg-primary/10 transition-all"
           >
             <ShieldCheck className="h-4 w-4" />
           </Link>
@@ -94,7 +93,7 @@ export function Navbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden"
+            className="lg:hidden p-1.5"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
