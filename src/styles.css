@@ -167,6 +167,9 @@
   50% { transform: translateY(-6px); }
 }
 
-@utility float-slow {
-  animation: djfun-float 3s ease-in-out infinite;
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

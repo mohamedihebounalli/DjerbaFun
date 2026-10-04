@@ -1,6 +1,7 @@
 import { Clock, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
+import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
@@ -8,12 +9,12 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import type { Activity } from "@/lib/activities";
 import { startingPrice } from "@/lib/activities";
 
-export function ActivityCard({ activity }: { activity: Activity }) {
+export function ActivityCard({ activity, className }: { activity: Activity; className?: string }) {
   const { t } = useI18n();
   const price = startingPrice(activity);
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border shadow-soft card-lift">
+    <article className={cn("group flex flex-col overflow-hidden rounded-2xl bg-card border border-border shadow-soft card-lift", className)}>
       <Link to="/activities/$slug" params={{ slug: activity.slug }} className="relative block aspect-[4/3] overflow-hidden">
         <img
           src={activity.image}

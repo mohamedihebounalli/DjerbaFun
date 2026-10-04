@@ -142,8 +142,10 @@ function Home() {
             {t("popular.viewAll")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {popular.map((a) => <ActivityCard key={a.id} activity={a} />)}
+        <div className="mt-8 flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 scrollbar-none md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
+          {popular.map((a) => (
+            <ActivityCard key={a.id} activity={a} className="snap-center shrink-0 w-[82vw] sm:w-[320px] md:w-auto" />
+          ))}
         </div>
       </section>
 
