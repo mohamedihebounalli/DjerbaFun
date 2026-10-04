@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import {
   ArrowRight, MessageCircle, Wallet, ShieldCheck, Users, Star,
-  Waves, Mountain, Bus, Quote, ChevronDown,
+  Waves, Mountain, Bus, Quote, ChevronDown, ChevronLeft, ChevronRight, ExternalLink,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-djerba.jpg";
@@ -150,26 +150,27 @@ function Home() {
       {/* REVIEWS */}
       <section className="bg-primary-soft/50">
         <div className="container-page py-16 md:py-24">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-center">{t("reviews.title")}</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {REVIEWS.map((r, i) => (
-              <figure key={i} className="rounded-2xl bg-card border border-border p-6 shadow-soft">
-                <div className="flex items-center gap-1 text-accent">
-                  {Array.from({ length: 5 }).map((_, k) => <Star key={k} className="h-4 w-4 fill-current" />)}
-                </div>
-                <Quote className="mt-3 h-5 w-5 text-primary/40" />
-                <blockquote className="mt-2 text-sm leading-relaxed text-foreground/90">"{r.text}"</blockquote>
-                <figcaption className="mt-5 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground font-semibold">
-                    {r.name.charAt(0)}
-                  </span>
-                  <div>
-                    <div className="font-semibold text-sm">{r.name}</div>
-                    <div className="text-xs text-muted-foreground">{r.origin} · Google review</div>
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold">{t("reviews.title")}</h2>
+            <p className="mt-2 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">
+              <span className="flex gap-0.5 text-accent">
+                {Array.from({ length: 5 }).map((_, k) => <Star key={k} className="h-3.5 w-3.5 fill-current" />)}
+              </span>
+              <span className="font-semibold text-foreground">5.0 sur 5</span>
+              — Basé sur les avis Google vérifiés
+            </p>
+          </div>
+          <ReviewsCarousel />
+          <div className="mt-10 text-center">
+            <a
+              href="https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card px-6 py-3 text-sm font-semibold text-primary shadow-soft transition hover:bg-primary hover:text-primary-foreground"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Consulter tous nos avis sur Google Maps
+            </a>
           </div>
         </div>
       </section>
@@ -228,8 +229,185 @@ function CategoryCard({
   );
 }
 
-const REVIEWS = [
-  { name: "Léa M.", origin: "Paris, France", text: "Booking via WhatsApp took 30 seconds. The jet ski safari was the highlight of our week — will definitely come back!" },
-  { name: "Marco R.", origin: "Milano, Italia", text: "Fantastic team, honest prices. The sunset boat trip was magical. Highly recommended." },
-  { name: "Anna K.", origin: "Warszawa, Polska", text: "Perfect for families. Our kids loved the banana boat and camel ride. Everything was well organised." },
+// ─── Google Reviews Data ──────────────────────────────────────────────────────
+const REVIEWS: { author: string; rating: number; comment: string; tag?: string }[] = [
+  { author: "Karima Abdiche", rating: 5, comment: "Sortie jet ski au coucher de soleil incroyable avec rencontre des dauphins. Merci à toute l'équipe de B20 et particulièrement à Yasmine, qui met vraiment tout en place pour que la sortie soit inoubliable. Je recommande à 100%.", tag: "Local Guide" },
+  { author: "Martin Chenoix", rating: 5, comment: "Station Nautique à recommander... tout se fait en famille, très chouette ambiance avec pas mal de choses à découvrir avec des prix très raisonnables. Matériel récent et entretenu." },
+  { author: "Stephen BACQUE", rating: 5, comment: "Superbe sortie bateau, ambiance incroyable, spot magnifique, mer translucide. Une équipe familiale très attentionné et sympathique.", tag: "Local Guide" },
+  { author: "Laurine", rating: 5, comment: "Super expérience ! La propriétaire est vraiment géniale, accueillante et très sympathique, tout comme toute son équipe. Les activités étaient au top et la plage est magnifique. Je recommande sans hésiter, merci pour ce super moment !" },
+  { author: "vdb sandra", rating: 5, comment: "Merci à Pascaline! Un super bon moment, j'ai adoré! Merci a Jasmine aussi et aux autres 🩷", tag: "Local Guide" },
+  { author: "Muriel Treguer", rating: 5, comment: "Exceptionnel. Incroyable balade en jet-ski. Equipe génial. Demander Saber à la plage", tag: "Local Guide" },
+  { author: "mimi mimi", rating: 5, comment: "expérience plus que formidable équipe accueillant souriant .. ma chère pascale est une merveille... on a passé une journée inoubliable avec toutes les activités disponible en toute sécurité.. merci et à la prochaine nchallah ... personnellemet je recommande" },
+  { author: "Ana Lino", rating: 5, comment: "I took the boat trip to the castle and it was incredible. Probably one of the best parts of my vacation in Djerba. Very nice staff, responsible pilots and free time to swim on beautiful clear water!", tag: "Local Guide" },
+  { author: "Simon", rating: 5, comment: "Incroyable souvenir laisser en moi après cette activité en jetski ! L'équipe franchement au top, très accueillante. Les paysages sont magnifiques, et sans parler des dauphins vu lors de la balade 🤩🤩🤩" },
+  { author: "Xavier Declerck", rating: 5, comment: "Une superbe expérience, C'était la première fois que nous faisions du jet ski. Les explications sont claires, la balade au top, nous avons passé un excellent moment." },
+  { author: "Asma Ben Mahmoud", rating: 5, comment: "Nous tenons à exprimer notre profonde gratitude à l'agence Sport Nautique B20 pour avoir organisé une expérience de balade en mer si exceptionnelle. Du début à la fin, tout a été parfaitement orchestré." },
+  { author: "Osmani Noumad", rating: 5, comment: "Balade en jet et bateau top, nous avons vu des dauphins pendant notre balade et surtout un grand merci à Pascale et sa fille pour l accueil je recommande." },
+  { author: "Magali Berger", rating: 5, comment: "Nous sommes parti sur le bateau jusque sur 1 petite île magnifique ou nous avons pu nous baigner. Sur la chemin nous n'avons pas eu la chance de voir les dauphins 🐬 mais nous avons passé un très bon moment. Le personnel est très sympa...", tag: "Local Guide" },
+  { author: "orianne leclaire", rating: 5, comment: "Je vous recommande cette base nautique qui est incroyable avec des personnes extraordinaires la main sur le cœur et qui vous feront toujours passer un super bon moment. Ambiance au top :D" },
+  { author: "Camille Desbois Flament", rating: 5, comment: "Un superbe accueil familial et aussi très arrangeant. Nous avons durant notre séjour à Djerba pu expérimenter le parachute ascensionnel avec une vue imprenable sur la mer turquoise que nous offre la nature. Accompagner d'un personnel très attentionné.", tag: "Local Guide" },
+  { author: "Houda Assou", rating: 5, comment: "Super balade à jet ski. Nous avons eu la chance de voir les dauphins. La maman et sa fille sont très professionnelles. Merci.", tag: "Local Guide" },
+  { author: "Amine Knis", rating: 5, comment: "Une belle expérience avec la B20, un grand merci à Salim Knis et à sa maman, ainsi qu'à Yasmine et son équipe des personnes professionnelles, accueillantes et bienveillantes. Je vous le conseille très fortement." },
+  { author: "Gurvan", rating: 5, comment: "Guides et personnel de la base nautique super agréable. Explications claires au niveau du maniement des jets skis, pendant la pause de la balade ils avais prévues des boissons. La sortie est accompagné d'un bateau si vous voulez aussi." },
+  { author: "Batiste Servoin", rating: 5, comment: "Balade en jet ski avec les dauphins. La balade en jet ski était super bien. L'équipe au top on a passé un super moment." },
+  { author: "Anne Dubois", rating: 5, comment: "Une expérience incroyable chez Pascal Jetski ! 🚤✨ Équipe au top du top, super accueillante et très professionnelle.", tag: "Local Guide" },
+  { author: "Célia HALM", rating: 5, comment: "Super balade en jet ski. Notre balade a été décalée suite au mauvais temps, pour que l'on puissent profiter aux maximum. La gérante est d'une grande gentillesse et préfère vendre des activités de qualités, ce qui est rare en Tunisie.", tag: "Local Guide" },
+  { author: "MOURAD belgacem", rating: 5, comment: "C'était parfait arrivé sur la plage en 4x4 en famille, exploration d'île déserte, c'était génial. Merci à tous." },
+  { author: "Julie Jomaux", rating: 5, comment: "Superbe expérience de jet ski à 7h du matin, avons eu la chance de voir les dauphins 🤩 Merci à la super équipe familiale !" },
+  { author: "Carole Grandis", rating: 5, comment: "Super équipe merci à Yasmine pour ce tour en jet ski formidable avec en prime des dauphins que demander de plus. Merci à Pascaline, Selim et ali. Nous avons passé un super moment en faisant aussi du parachute ascensionnel.", tag: "Local Guide" },
+  { author: "kadhem kacem", rating: 5, comment: "Very Good experience, the service was good, we were lucky we saw the Dolphins. The Jet ski and the boat were excellent. Yasmine and the whole team was very kind." },
+  { author: "Julie Dumas", rating: 5, comment: "Merci à Pascaline et son équipe souriante pour la sortie en jet ski. Bons équipements, entreprise familiale, on reviendra ☀️", tag: "Local Guide" },
+  { author: "Fayssal El jélé-jélé", rating: 5, comment: "Un accueille super, des jets skis hyper qualitatifs ! Un business familial au top. Allez-y les yeux fermés!", tag: "Local Guide" },
+  { author: "Clémentine Ben Messaoud", rating: 5, comment: "Nous avons fait la ballade en mer (bateau et jet ski) pour aller à la rencontre des dauphins puis le parachute ascensionnel - c'était extra! Pascale et son équipe sont au top! Je recommande à 100%." },
+  { author: "Hélène vermeire benz", rating: 5, comment: "Nous avons pris un bateau pour 2 personnes et découvert des endroits magnifiques loin des touristes." },
+  { author: "barbe rousse", rating: 5, comment: "Très bel accueil et activité au top ! Mes deux enfants ont vraiment kiffé et moi également. L'équipe ainsi que la gérante sont vraiment sympa et parle tous très bien français.", tag: "Local Guide" },
+  { author: "Nathan", rating: 5, comment: "Sous une chaleur accablante nous avons pu faire une chouette balade en Jet ski! Les personnes avec qui nous avons communiquer sont d'une profonde gentillesse !", tag: "Local Guide" },
+  { author: "Vladimir Ristevski", rating: 5, comment: "Very very good experience. They have 2 jet skis, parachute boat ride, and many other water rides. Pascale (owner) speaks English, German and French. Boat crew is very fun, all local Tunisian people. Must try.", tag: "Local Guide" },
+  { author: "bilel boulem", rating: 5, comment: "Merci pour ces bons moments passés avec vous equipe au top on sait regalé je recommande fortement si vous voulez passe un super moment dans un cadre magnifique merci Yasmine Salim et la maman pour votre reactivité." },
+  { author: "Benoit Petit", rating: 5, comment: "Super sympathique et très pros. Nous conseillons vivement. Merci pour nos 100 élèves. Bonne continuation à vous." },
+  { author: "Alexandre", rating: 5, comment: "Équipe au top. Les jets skis sont neufs… je recommande !" },
+  { author: "Marius Motury", rating: 5, comment: "Mérite plus de visibilité car le moment était super ! J'ai pus faire 1h30 de jet ski en toute liberté avec un mono super sympathique où nous étions qu'à 2. C'est en famille et Pascale la maman est super gentille." },
+  { author: "Yvon Perret", rating: 5, comment: "Une jolie ballade en mer avec arrêt dans un lagon agréable et retour. 1h 30de ballade pour une somme très raisonnable. Possibilité de suivre le bateau en Jet-ski pour les amateurs.", tag: "Local Guide" },
+  { author: "Najla Ben Slimene", rating: 5, comment: "On a vécu une expérience unique avec leur équipe professionnelle. Ils sont aux petits soins de leurs clients. Une dame très gentille était avec les enfants sur le bateau.", tag: "Local Guide" },
+  { author: "Olivia Graphiste", rating: 5, comment: "✨ Un immense merci à Sport Nautiques - B20 pour cette super expérience ! Mes deux garçons ont adoré — à chaque séance, ils reviennent avec le sourire 😃. Un accueil chaleureux, une équipe au top menée par Pascaline." },
+  { author: "Stece 35", rating: 5, comment: "Toutes l équipes très gentil Activite au top je recommande à 100%" },
+  { author: "Quentin Rulmont", rating: 5, comment: "Super expérience, on a vu un dauphin de près! Petite île à côté magnifique et guides très sympa!" },
+  { author: "N. R.", rating: 5, comment: "Un accueil avec le sourire, une équipe à l'écoute et rassurante, ma fille et moi avons vécu une expérience jetski incroyable avec une vue digne du paradis ! Je recommande ++++++ Merci encore à vous !", tag: "Local Guide" },
+  { author: "Amelka Soja", rating: 5, comment: "The best experience of my life!! Me and my boyfriend rented one jetski for 1.5h and it was great. the service is the best in the world. Thanks to the guide we managed to see the deflins!! I recommend❤️" },
+  { author: "Houssem Eddine", rating: 5, comment: "Superbe experience avec B20. Selim est super gentil ainsi que toute la famille de B20. Merci pour la balade et la baignade." },
+  { author: "Ludivine Awth", rating: 5, comment: "Superbe expérience avec la base nautique B20. Balade d'1h30 en bateau avec une pause baignade, un endroit idyllique avec une eau turquoise et translucide à couper le souffle !" },
+  { author: "Yassine Knis", rating: 5, comment: "Super expérience ! Des moments incroyables et magique ☀️😎" },
+  { author: "Cathy", rating: 5, comment: "Un entreprise familiale accueillante, mélange Européen/Tunisien, de belles histoires. Nous y avons fait du jet ski..." },
+  { author: "Heda Rni", rating: 5, comment: "Super expérience ! Une entreprise familiale accueillante et chaleureuse. Nous avons fait du parachute avec en bonus une petite balade en bateau le long des côtes." },
+  { author: "Aurelie Milovanow", rating: 5, comment: "2 excursions avec eux : une en bateau avec des Jetski qui nous suivait, direction les dauphins plus la lagune, c'était tellement bien équipe au top !", tag: "Local Guide" },
+  { author: "Pascale Knis", rating: 5, comment: "Experience inoubliable ! Très bon service avec des personnes chaleureuses. Bel endroit autant pour vous baignez que pour faire des activités nautiques!! Highly recommanded!" },
+  { author: "Karim Knis", rating: 5, comment: "Super activités ! Surtout la balade en mer et le parachute 😍✅" },
+  { author: "Ce Le KLTS", rating: 5, comment: "Superbe excursion en mer en compagnie de dauphins .🐬 Parachute ascensionnel à faire absolument ! Contact très agréable 👍" },
+  { author: "Chloe Charlet", rating: 5, comment: "Ma première fois en jet ski, c'était fabuleux,le personnel très gentil ! Je recommande !" },
+  { author: "Kamel Bourguiba", rating: 5, comment: "Une base nautique impeccable avec une bonne ambiance, merciii à la patronne qui déchire, merci aussi au pilote qui nous a fais découvrir des magnifiques endroit 🙏🏻" },
+  { author: "Sophie Pereira", rating: 5, comment: "Sortie en bateau au top ! Les dauphins étaient au rendez-vous, c'était magnifique ! Et une équipe géniale… je vous conseille vraiment cette base nautique 👍" },
 ];
+
+// ─── Reviews Carousel ─────────────────────────────────────────────────────────
+const CARDS_PER_PAGE_DESKTOP = 3;
+
+function ReviewsCarousel() {
+  const [page, setPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect viewport width to switch cards-per-page
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => setIsMobile(e.matches);
+    handler(mq);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const perPage = isMobile ? 1 : CARDS_PER_PAGE_DESKTOP;
+  const totalPages = Math.ceil(REVIEWS.length / perPage);
+
+  const prev = useCallback(() => setPage((p) => (p - 1 + totalPages) % totalPages), [totalPages]);
+  const next = useCallback(() => setPage((p) => (p + 1) % totalPages), [totalPages]);
+
+  // Reset page index when perPage changes to avoid out-of-range
+  useEffect(() => { setPage(0); }, [perPage]);
+
+  // Auto-advance every 6 s
+  useEffect(() => {
+    const id = setInterval(next, 6000);
+    return () => clearInterval(id);
+  }, [next]);
+
+  const slice = REVIEWS.slice(page * perPage, page * perPage + perPage);
+
+  return (
+    <div className="mt-10">
+      {/* Cards */}
+      <div className="grid gap-5 md:grid-cols-3">
+        {slice.map((r, i) => (
+          <figure
+            key={`${page}-${i}`}
+            className="rounded-2xl bg-card border border-border p-6 shadow-soft flex flex-col"
+          >
+            {/* Stars */}
+            <div className="flex items-center gap-1 text-accent">
+              {Array.from({ length: 5 }).map((_, k) => (
+                <Star key={k} className="h-4 w-4 fill-current" />
+              ))}
+            </div>
+            {/* Quote icon */}
+            <Quote className="mt-3 h-5 w-5 text-primary/40 shrink-0" />
+            {/* Review text */}
+            <blockquote className="mt-2 text-sm leading-relaxed text-foreground/90 flex-1">
+              "{r.comment}"
+            </blockquote>
+            {/* Footer */}
+            <figcaption className="mt-5 flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-semibold uppercase text-sm">
+                {r.author.charAt(0)}
+              </span>
+              <div className="min-w-0">
+                <div className="font-semibold text-sm truncate">{r.author}</div>
+                <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                  {/* Google badge */}
+                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-semibold text-blue-700 leading-none">
+                    <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" aria-hidden>
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Avis Google
+                  </span>
+                  {r.tag && (
+                    <span className="inline-flex rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary leading-none">
+                      {r.tag}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      {/* Navigation */}
+      <div className="mt-8 flex flex-col items-center gap-4">
+        {/* Prev / Next buttons */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={prev}
+            aria-label="Avis précédents"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <span className="text-sm text-muted-foreground tabular-nums">
+            {page + 1} / {totalPages}
+          </span>
+          <button
+            onClick={next}
+            aria-label="Avis suivants"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground hover:border-primary"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+        {/* Dot indicators — condensed to max 10 for readability */}
+        <div className="flex gap-1.5 flex-wrap justify-center max-w-xs">
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage(i)}
+              aria-label={`Page ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${
+                i === page ? "w-6 bg-primary" : "w-1.5 bg-border hover:bg-primary/40"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

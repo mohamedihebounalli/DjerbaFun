@@ -14,7 +14,7 @@ export function Footer() {
               <Waves className="h-5 w-5" />
             </span>
             <span className="font-display text-2xl font-bold">
-              Djerba<span className="text-accent"> Fun</span>
+              Island<span className="text-accent"> Experience</span>
             </span>
           </div>
           <p className="mt-4 max-w-md text-sm text-primary-foreground/80">{t("footer.tagline")}</p>
