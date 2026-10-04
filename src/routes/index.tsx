@@ -321,23 +321,28 @@ function ReviewsCarousel() {
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl bg-card border border-border p-6 shadow-soft flex flex-col cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30"
+            className="group rounded-2xl bg-card border border-border p-6 shadow-soft flex flex-col h-[300px] cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30"
           >
-            {/* Stars */}
-            <div className="flex items-center gap-1 text-accent">
-              {Array.from({ length: 5 }).map((_, k) => (
-                <Star key={k} className="h-4 w-4 fill-current" />
-              ))}
+            {/* Top block: stars + quote + clamped text */}
+            <div className="flex flex-col flex-1 overflow-hidden">
+              {/* Stars + Quote on same row */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1 text-accent">
+                  {Array.from({ length: 5 }).map((_, k) => (
+                    <Star key={k} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+                <Quote className="h-4 w-4 text-primary/30 shrink-0" />
+              </div>
+              {/* Review text — clamped to 4 lines */}
+              <blockquote className="mt-3 text-sm leading-relaxed text-foreground/80 line-clamp-4">
+                "{r.comment}"
+              </blockquote>
             </div>
-            {/* Quote icon */}
-            <Quote className="mt-3 h-5 w-5 text-primary/40 shrink-0" />
-            {/* Review text */}
-            <blockquote className="mt-2 text-sm leading-relaxed text-foreground/90 flex-1">
-              "{r.comment}"
-            </blockquote>
-            {/* Footer */}
-            <div className="mt-5 flex items-center gap-3">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-semibold uppercase text-sm">
+
+            {/* Footer — always pinned to bottom */}
+            <div className="mt-4 pt-4 border-t border-border flex items-center gap-3 shrink-0">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-semibold uppercase text-sm">
                 {r.author.charAt(0)}
               </span>
               <div className="min-w-0">
