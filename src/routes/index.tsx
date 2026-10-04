@@ -152,12 +152,12 @@ function Home() {
         <div className="container-page py-16 md:py-24">
           <div className="text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold">{t("reviews.title")}</h2>
-            <p className="mt-2 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">
+            <p className="mt-2 flex flex-row flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-muted-foreground">
               <span className="flex gap-0.5 text-accent">
                 {Array.from({ length: 5 }).map((_, k) => <Star key={k} className="h-3.5 w-3.5 fill-current" />)}
               </span>
               <span className="font-semibold text-foreground">4.8 sur 5</span>
-              — Basé sur les avis Google vérifiés
+              <span>— Basé sur les avis Google vérifiés</span>
             </p>
           </div>
           <ReviewsCarousel />
@@ -303,12 +303,6 @@ function ReviewsCarousel() {
   // Reset page index when perPage changes to avoid out-of-range
   useEffect(() => { setPage(0); }, [perPage]);
 
-  // Auto-advance every 6 s
-  useEffect(() => {
-    const id = setInterval(next, 6000);
-    return () => clearInterval(id);
-  }, [next]);
-
   const slice = REVIEWS.slice(page * perPage, page * perPage + perPage);
 
   return (
@@ -321,32 +315,32 @@ function ReviewsCarousel() {
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl bg-card border border-border p-6 shadow-soft flex flex-col h-[300px] cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30"
+            className="group w-full h-auto min-h-[260px] p-5 sm:p-6 bg-card rounded-2xl shadow-soft border border-border flex flex-col justify-between transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 cursor-pointer"
           >
             {/* Top block: stars + quote + clamped text */}
-            <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="space-y-3">
               {/* Stars + Quote on same row */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1 text-accent">
+                <div className="flex items-center gap-1 text-accent text-sm sm:text-base">
                   {Array.from({ length: 5 }).map((_, k) => (
                     <Star key={k} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <Quote className="h-4 w-4 text-primary/30 shrink-0" />
+                <Quote className="w-5 h-5 text-primary/30 shrink-0" />
               </div>
               {/* Review text — clamped to 4 lines */}
-              <blockquote className="mt-3 text-sm leading-relaxed text-foreground/80 line-clamp-4">
+              <p className="text-foreground/80 text-xs sm:text-sm leading-relaxed line-clamp-4">
                 "{r.comment}"
-              </blockquote>
+              </p>
             </div>
 
             {/* Footer — always pinned to bottom */}
-            <div className="mt-4 pt-4 border-t border-border flex items-center gap-3 shrink-0">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-semibold uppercase text-sm">
+            <div className="flex items-center gap-3 pt-3 mt-4 border-t border-border">
+              <span className="grid h-8 w-8 text-xs sm:h-10 sm:w-10 sm:text-sm shrink-0 place-items-center rounded-full bg-primary text-primary-foreground font-semibold uppercase">
                 {r.author.charAt(0)}
               </span>
-              <div className="min-w-0">
-                <div className="font-semibold text-sm truncate">{r.author}</div>
+              <div className="flex flex-col text-left min-w-0">
+                <span className="font-semibold text-foreground text-xs sm:text-sm truncate">{r.author}</span>
                 <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
                   {/* Google badge */}
                   <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-semibold text-blue-700 leading-none">
