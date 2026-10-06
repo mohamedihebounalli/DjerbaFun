@@ -367,17 +367,17 @@ const SEED: Activity[] = [
 
   // ─── EXCURSIONS ───────────────────────────────────────────────────────────
   {
-    id: "tour-djerba",
-    slug: "tour-ile-djerba",
+    id: "tour-djerba-demi",
+    slug: "tour-ile-djerba-demi-journee",
     category: "excursions",
-    title: "Tour de l'île de Djerba",
-    shortDescription: "Full day discovering Houmt Souk, El Ghriba, Guellala and more.",
+    title: "Tour de l'île de Djerba (Demi-journée)",
+    shortDescription: "Discover Houmt Souk medina, Guellala pottery village, and El Ghriba in a half day.",
     longDescription:
-      "Djerba is a treasure trove of culture, history, and beauty — and this full-day island tour reveals it all. From the ancient Roman road and the famous El Ghriba synagogue to the potters' village of Guellala and the bustling Houmt Souk market, you'll experience the island's soul. A traditional Tunisian lunch is included mid-day, and your guide provides fascinating historical commentary throughout.",
+      "A condensed 4-hour discovery tour of Djerba's essential cultural highlights. Visit the famous pottery workshops of Guellala, admire the historic El Ghriba synagogue, and wander through the bustling alleys of Houmt Souk medina. Perfect for travelers with limited time who still want to experience the soul of the island.",
     image: excursionDjerba,
-    images: [excursionDjerba, boat, camel],
-    durationMinutes: 480,
-    durationLabel: "Full day",
+    images: [excursionDjerba, camel, boat],
+    durationMinutes: 240,
+    durationLabel: "Half day (4 h)",
     types: ["family", "couple"],
     badge: "Culture",
     active: true,
@@ -386,7 +386,74 @@ const SEED: Activity[] = [
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 0,
-    options: [{ label: "Full day", price: null }],
+    options: [{ label: "Demi-journée", price: 35 }],
+    included: [
+      "Hotel pickup & drop-off",
+      "Air-conditioned transport",
+      "Multilingual local guide",
+      "Guellala Pottery Village entry",
+      "El Ghriba synagogue entry",
+    ],
+    excluded: [
+      "Lunch & drinks",
+      "Personal shopping",
+      "Tips for guide & driver",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Tour de l'île de Djerba (Demi-journée)",
+        steps: [
+          {
+            time: "08:30",
+            label: "Hotel Pickup",
+            description: "Meet your guide at your hotel lobby and board comfortable transport.",
+          },
+          {
+            time: "09:15",
+            label: "Guellala Pottery Village",
+            description: "Explore artisan workshops and witness ancient pottery crafting techniques.",
+          },
+          {
+            time: "10:30",
+            label: "El Ghriba Synagogue",
+            description: "Visit one of the oldest and most famous historic synagogues in the world.",
+          },
+          {
+            time: "11:30",
+            label: "Houmt Souk Medina",
+            description: "Stroll through colorful souk markets and craft shops.",
+          },
+          {
+            time: "12:30",
+            label: "Return to Hotel",
+            description: "Comfortable drop-off back at your hotel.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "tour-djerba-complete",
+    slug: "tour-ile-djerba-journee-complete",
+    category: "excursions",
+    title: "Tour de l'île de Djerba (Journée complète)",
+    shortDescription: "Full day discovering Houmt Souk, El Ghriba, Guellala, Roman Road and traditional lunch.",
+    longDescription:
+      "Djerba is a treasure trove of culture, history, and beauty — and this full-day island tour reveals it all. From the ancient Roman road and the famous El Ghriba synagogue to the potters' village of Guellala and the bustling Houmt Souk market, you'll experience the island's soul. A traditional Tunisian lunch is included mid-day, and your guide provides fascinating historical commentary throughout.",
+    image: boat,
+    images: [boat, excursionDjerba, camel],
+    durationMinutes: 480,
+    durationLabel: "Full day (8 h)",
+    types: ["family", "couple"],
+    badge: "Culture",
+    active: true,
+    meetingPoint: "Your hotel lobby",
+    departureLocation: "Hotel pickup across Djerba",
+    difficulty: "Easy",
+    languages: ["FR", "EN", "IT", "DE", "PL"],
+    minAge: 0,
+    options: [{ label: "Journée complète", price: 60 }],
     included: [
       "Hotel pickup & drop-off",
       "Air-conditioned minibus",
@@ -404,7 +471,7 @@ const SEED: Activity[] = [
     itinerary: [
       {
         day: 1,
-        title: "Tour de l'île de Djerba",
+        title: "Tour de l'île de Djerba (Journée complète)",
         steps: [
           {
             time: "08:30",
@@ -414,27 +481,27 @@ const SEED: Activity[] = [
           {
             time: "09:15",
             label: "Roman Road & Coastal Viewpoint",
-            description: "Drive along the ancient Roman paved road connecting the island to the mainland — a 2,000-year-old marvel still in use today.",
+            description: "Drive along the ancient Roman paved road connecting the island to the mainland.",
           },
           {
             time: "10:30",
             label: "Guellala Pottery Village",
-            description: "Visit artisan workshops where local potters craft terracotta using techniques unchanged for centuries. Browse and purchase authentic pieces.",
+            description: "Visit artisan workshops where local potters craft terracotta.",
           },
           {
             time: "12:30",
             label: "Houmt Souk Market & Lunch",
-            description: "Explore the lively medina market, then sit down to a traditional Tunisian lunch featuring fresh fish, harissa, and Djerba pastries.",
+            description: "Explore the lively medina market, then sit down to a traditional Tunisian lunch.",
           },
           {
             time: "15:00",
             label: "Fadhloun Mosque & El Ghriba Synagogue",
-            description: "Visit two of Djerba's most iconic religious sites — the photogenic Fadhloun Mosque and the El Ghriba, one of the oldest synagogues in the world.",
+            description: "Visit two of Djerba's most iconic religious sites.",
           },
           {
             time: "17:00",
             label: "Return to Hotel",
-            description: "Comfortable ride back to your hotel, arriving before evening.",
+            description: "Comfortable ride back to your hotel.",
           },
         ],
       },
