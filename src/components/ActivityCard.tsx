@@ -29,9 +29,11 @@ export function ActivityCard({ activity, className }: { activity: Activity; clas
             {activity.badge}
           </span>
         )}
-        <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-background/85 backdrop-blur px-2.5 py-1 text-xs font-medium text-foreground shadow-soft">
-          <Clock className="h-3.5 w-3.5" /> {activity.durationLabel}
-        </div>
+        {activity.durationLabel && (
+          <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-background/85 backdrop-blur px-2.5 py-1 text-xs font-medium text-foreground shadow-soft">
+            <Clock className="h-3.5 w-3.5" /> {activity.durationLabel}
+          </div>
+        )}
       </Link>
 
       <div className="flex flex-1 flex-col p-4">
@@ -52,10 +54,23 @@ export function ActivityCard({ activity, className }: { activity: Activity; clas
 
         <div className="mt-auto pt-4 flex items-end justify-between gap-3">
           <div>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground">{t("card.from")}</div>
-            <div className="font-display text-xl font-bold text-primary">
-              {price === null ? "—" : `${price}€`}
-            </div>
+            {activity.id === "boat-trip" ? (
+              <div>
+                <div className="text-xs uppercase tracking-wide text-muted-foreground">Tarifs</div>
+                <div className="font-display text-sm font-bold text-primary flex flex-wrap items-center gap-1.5 mt-0.5">
+                  <span className="whitespace-nowrap">Adulte : 30€</span>
+                  <span className="text-muted-foreground/60 font-normal">|</span>
+                  <span className="whitespace-nowrap">Enfant : 15€</span>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div className="text-xs uppercase tracking-wide text-muted-foreground">{t("card.from")}</div>
+                <div className="font-display text-xl font-bold text-primary">
+                  {price === null ? "—" : `${price}€`}
+                </div>
+              </div>
+            )}
           </div>
           <Button
             asChild size="sm"

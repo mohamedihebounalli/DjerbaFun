@@ -59,8 +59,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 2;
-const STORAGE_KEY = "djfun.activities.v2";
+const SEED_VERSION = 3;
+const STORAGE_KEY = "djfun.activities.v3";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ const SEED: Activity[] = [
     title: "Jet Ski",
     shortDescription: "Feel the rush of the open sea on a solo or tandem jet ski.",
     longDescription:
-      "Strap on your life jacket and blast across the turquoise waters of Djerba at full throttle. Our modern Sea-Doo jet skis are maintained daily and equipped with safety cut-off switches. Choose a short 15-minute blast, a half-hour cruise along the coastline, or our iconic 1h30 Safari route that takes you past flamingo sandbanks and deserted coves. Full briefing provided — no experience needed.",
+      "Discover the excitement of Jet Skiing in the crystal-clear waters of Djerba. Whether you're looking for adventure, speed, or simply a unique way to enjoy the Mediterranean Sea, this experience is perfect for you. No previous experience is required. Choose between a 15 or 30-minute Jet Ski ride directly in front of our station, ideal for enjoying the thrill of the open water at your own pace. For a more immersive experience, join our 1.5-hour guided Jet Ski tour along the beautiful Djerba coastline. Discover the coast from the sea, with the opportunity to encounter dolphins in their natural environment, followed by a relaxing stop at the lagoon to enjoy its clear waters and peaceful surroundings. Whether you choose a short ride or a guided excursion, enjoy a safe and memorable experience on the Mediterranean Sea.",
     image: jetski,
     images: [jetski, parasailing, banana],
     durationMinutes: 30,
@@ -88,7 +88,7 @@ const SEED: Activity[] = [
     options: [
       { label: "15 min", price: 30 },
       { label: "30 min", price: 50 },
-      { label: "Safari 1 h 30", price: 90 },
+      { label: "Trip to Laguna 1h30", price: 90 },
     ],
     included: [
       "Life jacket & safety briefing",
@@ -109,7 +109,7 @@ const SEED: Activity[] = [
     title: "Banana Boat",
     shortDescription: "Fun-packed ride perfect for friends and family.",
     longDescription:
-      "Hold on tight as our speedboat drags you and your group across the waves on a giant inflatable banana! Expect twists, turns, and plenty of splashing. This is the ultimate group activity — guaranteed laughs for all ages. Up to 6 riders per session. Life jackets included, swim gear recommended.",
+      "Enjoy a fun and exciting ride on the Mediterranean Sea with our Banana Boat experience. Pulled by a speedboat along the coast of Djerba, you’ll experience the thrill of the waves, splashes, and turns while sharing a memorable moment with family or friends. No previous experience is required. Our team provides the necessary safety equipment and instructions before the ride, ensuring a safe and enjoyable experience for everyone.",
     image: banana,
     images: [banana, jetski, boat],
     durationMinutes: 15,
@@ -125,7 +125,7 @@ const SEED: Activity[] = [
     included: [
       "Life jackets for all riders",
       "Safety briefing",
-      "Up to 6 riders per banana",
+      "Up to 4 riders per banana",
     ],
     excluded: ["Swimwear (bring your own)", "Personal photography"],
   },
@@ -136,11 +136,11 @@ const SEED: Activity[] = [
     title: "Sofa Ride",
     shortDescription: "Hold tight on this bouncy inflatable towed by a speedboat.",
     longDescription:
-      "The Sofa Ride is Djerba's most hilarious inflatable experience. Sit comfortably on a giant inflatable sofa — until the speedboat picks up speed and turns you sideways! Perfect for small groups wanting big laughs without requiring any swimming skill. Life jackets always provided.",
+      "Glide across the Mediterranean waters of Djerba on our Sofa Ride. Towed by a speedboat, enjoy the sensation of moving effortlessly over the waves while feeling the speed and energy of the sea around you. Whether you’re looking for a shared experience with friends or a memorable activity with family, the Sofa Ride offers a unique way to enjoy the open water and discover the coastline from a different perspective.",
     image: banana,
     images: [banana, jetski, boat],
-    durationMinutes: 15,
-    durationLabel: "15 min",
+    durationMinutes: 0,
+    durationLabel: "",
     types: ["family", "adventure"],
     active: true,
     meetingPoint: "Sidi Mahrez beach",
@@ -148,8 +148,8 @@ const SEED: Activity[] = [
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE"],
     minAge: 8,
-    options: [{ label: "15 min", price: 15 }],
-    included: ["Life jackets", "Safety briefing", "Towel service"],
+    options: [{ label: "Sofa Ride", price: 15 }],
+    included: ["Life jackets", "Safety briefing", "Minimum 2 personnes"],
     excluded: ["Swimwear", "Personal photography"],
   },
   {
@@ -159,7 +159,7 @@ const SEED: Activity[] = [
     title: "Parasailing",
     shortDescription: "Fly above the turquoise sea and enjoy an unbeatable view of Djerba.",
     longDescription:
-      "Soar up to 80 metres above the Mediterranean and drink in Djerba's iconic panorama — the Roman causeway, the flamingo lagoons, and endless turquoise sea below. Our parasailing boat handles take-off and landing smoothly from the deck, so you never even need to get wet. Tandem option available for couples.",
+      "Enjoy the freedom of flying above the Mediterranean with our boat-towed parasailing experience. Sit back, relax, and let our professional team take care of everything while you enjoy the stunning views of Djerba’s coastline from the air. Our spacious parasailing boat is powered by two 200 HP Yamaha engines, offering a comfortable and reliable experience on the water. No previous experience is required — simply enjoy the flight, the sea breeze, and the panoramic views. Friends and family are also welcome to come along and watch the experience from the boat for €10 per person. Fly, relax, and enjoy Djerba from a whole new perspective.",
     image: parasailing,
     images: [parasailing, jetski, boat],
     durationMinutes: 20,
@@ -176,7 +176,6 @@ const SEED: Activity[] = [
     options: [{ label: "1 flight", price: 40 }],
     included: [
       "Full harness & safety equipment",
-      "Deck launch (no water entry needed)",
       "Certified crew",
       "Photo from the boat (on request)",
     ],
@@ -190,9 +189,9 @@ const SEED: Activity[] = [
     slug: "boat-trip-djerba",
     category: "water",
     title: "Boat Trip",
-    shortDescription: "Traditional pirate boat ride along the coast.",
+    shortDescription: "Traditional boat ride along the coast with water ski & wakeboard options.",
     longDescription:
-      "Embark on a classic pirate-style wooden boat cruise along Djerba's stunning coastline. Enjoy the sea breeze, the turquoise waters, and a guided commentary on the island's maritime history. Stop for a swim in open water and cool off before heading back. Great for families.",
+      "Experience the thrill of gliding across the Mediterranean with a 30-minute Water Ski or Wakeboard session. Get pulled behind the boat, feel the speed of the water, and enjoy an exciting ride along the coast of Djerba. Whether you are trying it for the first time or already have experience, our team will provide the necessary guidance and equipment for a safe and enjoyable session.",
     image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 90,
@@ -204,8 +203,12 @@ const SEED: Activity[] = [
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 4,
-    options: [{ label: "1 h 30", price: 30 }],
+    options: [
+      { label: "Adult (Adulte)", price: 30 },
+      { label: "Child (Enfant)", price: 15 },
+    ],
     included: [
+      "Tarifs : Adulte 30€ | Enfant 15€",
       "Life jackets",
       "Swimming stop",
       "On-board commentary",
@@ -217,9 +220,9 @@ const SEED: Activity[] = [
     slug: "vip-boat-trip-djerba",
     category: "water",
     title: "VIP Boat Trip",
-    shortDescription: "Private 3 h charter with snorkeling stop and refreshments.",
+    shortDescription: "Private charter along the coast with dolphin watching and lagoon swim.",
     longDescription:
-      "Treat yourself to a fully private 3-hour motorboat charter. Your personal captain navigates to the most beautiful spots along the Djerba coastline. Snorkelling equipment is provided, and complimentary soft drinks and snacks are served on board. Perfect for honeymooners, celebrations, or any group wanting a premium day out.",
+      "Enjoy a private boat trip along the beautiful coastline of Djerba, perfect for families and groups of friends. Cruise comfortably aboard our spacious boat, powered by two 200 HP Yamaha engines, and discover the island from the sea. During the trip, explore the coastline, enjoy the open sea, and keep an eye out for dolphins in their natural environment. The excursion also includes a swimming stop at the lagoon, where you can relax, swim, and enjoy the crystal-clear waters. A private and relaxing experience, ideal for sharing unforgettable moments at sea with your family or friends.",
     image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 180,
@@ -236,7 +239,6 @@ const SEED: Activity[] = [
     options: [{ label: "3 h private", price: 300 }],
     included: [
       "Private captain & crew",
-      "Snorkelling equipment",
       "Soft drinks & snacks",
       "Life jackets",
       "Hotel pickup (Djerba zone)",
@@ -248,9 +250,9 @@ const SEED: Activity[] = [
     slug: "sunset-boat-djerba",
     category: "water",
     title: "Sunset Boat Trip",
-    shortDescription: "Cruise into the sunset — the most romantic hour in Djerba.",
+    shortDescription: "Cruise into the sunset through the lagoon — romantic and peaceful.",
     longDescription:
-      "As the sun dips toward the horizon, paint the Mediterranean sky in gold and crimson from the deck of our sunset cruiser. This 2-hour evening cruise departs around 17:30 and returns at dusk. A glass of sparkling juice is offered on board. Popular for couples, groups, and anyone who wants to end the day memorably.",
+      "Experience the beauty of Djerba at sunset with a relaxing boat trip through the lagoon. As the sun goes down, enjoy the warm colors of the sky reflected on the calm waters and take in the peaceful surroundings. This experience can be enjoyed privately with your family or as part of a small group, making it perfect for couples, families, and friends looking for a quiet and memorable moment on the water. A beautiful way to end the day and enjoy the natural beauty of Djerba’s lagoon.",
     image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 120,
@@ -367,84 +369,17 @@ const SEED: Activity[] = [
 
   // ─── EXCURSIONS ───────────────────────────────────────────────────────────
   {
-    id: "tour-djerba-demi",
-    slug: "tour-ile-djerba-demi-journee",
+    id: "tour-djerba",
+    slug: "tour-ile-djerba",
     category: "excursions",
-    title: "Tour de l'île de Djerba (Demi-journée)",
-    shortDescription: "Discover Houmt Souk medina, Guellala pottery village, and El Ghriba in a half day.",
-    longDescription:
-      "A condensed 4-hour discovery tour of Djerba's essential cultural highlights. Visit the famous pottery workshops of Guellala, admire the historic El Ghriba synagogue, and wander through the bustling alleys of Houmt Souk medina. Perfect for travelers with limited time who still want to experience the soul of the island.",
-    image: excursionDjerba,
-    images: [excursionDjerba, camel, boat],
-    durationMinutes: 240,
-    durationLabel: "Half day (4 h)",
-    types: ["family", "couple"],
-    badge: "Culture",
-    active: true,
-    meetingPoint: "Your hotel lobby",
-    departureLocation: "Hotel pickup across Djerba",
-    difficulty: "Easy",
-    languages: ["FR", "EN", "IT", "DE", "PL"],
-    minAge: 0,
-    options: [{ label: "Demi-journée", price: 35 }],
-    included: [
-      "Hotel pickup & drop-off",
-      "Air-conditioned transport",
-      "Multilingual local guide",
-      "Guellala Pottery Village entry",
-      "El Ghriba synagogue entry",
-    ],
-    excluded: [
-      "Lunch & drinks",
-      "Personal shopping",
-      "Tips for guide & driver",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Tour de l'île de Djerba (Demi-journée)",
-        steps: [
-          {
-            time: "08:30",
-            label: "Hotel Pickup",
-            description: "Meet your guide at your hotel lobby and board comfortable transport.",
-          },
-          {
-            time: "09:15",
-            label: "Guellala Pottery Village",
-            description: "Explore artisan workshops and witness ancient pottery crafting techniques.",
-          },
-          {
-            time: "10:30",
-            label: "El Ghriba Synagogue",
-            description: "Visit one of the oldest and most famous historic synagogues in the world.",
-          },
-          {
-            time: "11:30",
-            label: "Houmt Souk Medina",
-            description: "Stroll through colorful souk markets and craft shops.",
-          },
-          {
-            time: "12:30",
-            label: "Return to Hotel",
-            description: "Comfortable drop-off back at your hotel.",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "tour-djerba-complete",
-    slug: "tour-ile-djerba-journee-complete",
-    category: "excursions",
-    title: "Tour de l'île de Djerba (Journée complète)",
-    shortDescription: "Full day discovering Houmt Souk, El Ghriba, Guellala, Roman Road and traditional lunch.",
+    title: "Tour de l'île de Djerba",
+    shortDescription: "Full day discovering Houmt Souk, El Ghriba, Guellala and more.",
     longDescription:
       "Djerba is a treasure trove of culture, history, and beauty — and this full-day island tour reveals it all. From the ancient Roman road and the famous El Ghriba synagogue to the potters' village of Guellala and the bustling Houmt Souk market, you'll experience the island's soul. A traditional Tunisian lunch is included mid-day, and your guide provides fascinating historical commentary throughout.",
-    image: boat,
-    images: [boat, excursionDjerba, camel],
+    image: excursionDjerba,
+    images: [excursionDjerba, boat, camel],
     durationMinutes: 480,
-    durationLabel: "Full day (8 h)",
+    durationLabel: "Full day",
     types: ["family", "couple"],
     badge: "Culture",
     active: true,
@@ -453,7 +388,7 @@ const SEED: Activity[] = [
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 0,
-    options: [{ label: "Journée complète", price: 60 }],
+    options: [{ label: "Full day", price: null }],
     included: [
       "Hotel pickup & drop-off",
       "Air-conditioned minibus",
@@ -471,7 +406,7 @@ const SEED: Activity[] = [
     itinerary: [
       {
         day: 1,
-        title: "Tour de l'île de Djerba (Journée complète)",
+        title: "Tour de l'île de Djerba",
         steps: [
           {
             time: "08:30",
@@ -481,27 +416,27 @@ const SEED: Activity[] = [
           {
             time: "09:15",
             label: "Roman Road & Coastal Viewpoint",
-            description: "Drive along the ancient Roman paved road connecting the island to the mainland.",
+            description: "Drive along the ancient Roman paved road connecting the island to the mainland — a 2,000-year-old marvel still in use today.",
           },
           {
             time: "10:30",
             label: "Guellala Pottery Village",
-            description: "Visit artisan workshops where local potters craft terracotta.",
+            description: "Visit artisan workshops where local potters craft terracotta using techniques unchanged for centuries. Browse and purchase authentic pieces.",
           },
           {
             time: "12:30",
             label: "Houmt Souk Market & Lunch",
-            description: "Explore the lively medina market, then sit down to a traditional Tunisian lunch.",
+            description: "Explore the lively medina market, then sit down to a traditional Tunisian lunch featuring fresh fish, harissa, and Djerba pastries.",
           },
           {
             time: "15:00",
             label: "Fadhloun Mosque & El Ghriba Synagogue",
-            description: "Visit two of Djerba's most iconic religious sites.",
+            description: "Visit two of Djerba's most iconic religious sites — the photogenic Fadhloun Mosque and the El Ghriba, one of the oldest synagogues in the world.",
           },
           {
             time: "17:00",
             label: "Return to Hotel",
-            description: "Comfortable ride back to your hotel.",
+            description: "Comfortable ride back to your hotel, arriving before evening.",
           },
         ],
       },

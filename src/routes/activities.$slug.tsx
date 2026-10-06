@@ -113,7 +113,9 @@ function ActivityDetail() {
 
             {/* Metadata badges */}
             <div className="flex flex-wrap gap-3">
-              <MetaBadge icon={Clock} label="Duration" value={activity.durationLabel} />
+              {activity.durationLabel && (
+                <MetaBadge icon={Clock} label="Duration" value={activity.durationLabel} />
+              )}
               {activity.languages && activity.languages.length > 0 && (
                 <MetaBadge
                   icon={Globe}

@@ -224,7 +224,22 @@ export function BookingWidget({ activity }: BookingWidgetProps) {
     <div className="rounded-3xl border border-border bg-card shadow-lift p-6 space-y-5">
       {/* Price header */}
       <div>
-        {isPriceOnRequest ? (
+        {activity.id === "boat-trip" ? (
+          <div>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+              Tarifs
+            </p>
+            <div className="mt-1 flex flex-wrap items-baseline gap-2">
+              <span className="font-display text-2xl font-extrabold text-primary">
+                Adulte : 30€
+              </span>
+              <span className="text-muted-foreground/60 font-medium">|</span>
+              <span className="font-display text-2xl font-extrabold text-primary">
+                Enfant : 15€
+              </span>
+            </div>
+          </div>
+        ) : isPriceOnRequest ? (
           <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 border border-accent/30 px-4 py-2">
             <Tag className="h-4 w-4 text-accent-foreground" />
             <span className="font-display text-sm font-semibold text-accent-foreground">
