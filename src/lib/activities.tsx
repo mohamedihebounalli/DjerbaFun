@@ -215,7 +215,7 @@ const SEED: Activity[] = [
     title: "Catamaran Dolphin Cruise",
     shortDescription: "2-hour catamaran cruise along the coast of Djerba in search of dolphins.",
     longDescription:
-      "Enjoy a 2-hour catamaran adventure along the coast of Djerba. Sail across the turquoise waters in search of dolphins and admire the island from a unique perspective.\n\nThe excursion includes a 30-minute swimming stop offshore and complimentary soft drinks on board.\n\nDeparture times: 10:00 AM & 2:00 PM.\n\nA relaxing and unforgettable sea experience for all ages.",
+      "Enjoy a 2-hour catamaran adventure along the coast of Djerba. Sail across the turquoise waters in search of dolphins and admire the island from a unique perspective.\nThe excursion includes a 30-minute swimming stop offshore and complimentary soft drinks on board.\nDeparture times: 10:00 AM & 2:00 PM.\nA relaxing and unforgettable sea experience for all ages.",
     image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 120,
@@ -297,12 +297,11 @@ const SEED: Activity[] = [
   {
     id: "scuba-diving",
     slug: "scuba-diving-djerba",
-    category: "water",
+category: "water",
     title: "Scuba Diving Experience in Djerba",
     shortDescription: "Discover the underwater world of Djerba with a qualified instructor.",
     longDescription:
-      "Discover the underwater world of Djerba with an unforgettable scuba diving experience, accompanied by a qualified instructor.\n\nHow the Activity Works:\n• Equipment Preparation: Your diving equipment is prepared before the activity.\n• Safety Briefing: Your instructor will explain the basics of scuba diving, essential techniques, and safety instructions before your dive.\n• Boat Trip: Board the boat and head to the selected diving site off the coast of Djerba.\n• Scuba Dive: Explore the underwater world of Djerba with your instructor in complete safety. The dive lasts approximately 30 to 50 minutes, depending on your breathing and air consumption underwater.\n• Return: After your underwater adventure, return by boat and enjoy an unforgettable experience discovering the marine life and underwater landscapes of Djerba.",
-    image: boat,
+      "Discover the underwater world of Djerba with an unforgettable scuba diving experience, accompanied by a qualified instructor.\nHow the Activity Works:\n• Equipment Preparation: Your diving equipment is prepared before the activity.  \n• Safety Briefing: Your instructor will explain the basics of scuba diving, essential techniques, and safety instructions before your dive.  \n• Boat Trip: Board the boat and head to the selected diving site off the coast of Djerba.  \n• Scuba Dive: Explore the underwater world of Djerba with your instructor in complete safety. The dive lasts approximately 30 to 50 minutes, depending on your breathing and air consumption underwater.  \n• Return: After your underwater adventure, return by boat and enjoy an unforgettable experience discovering the marine life and underwater landscapes of Djerba.",    image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 120,
     durationLabel: "2 h",
