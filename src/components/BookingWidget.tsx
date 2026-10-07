@@ -224,7 +224,7 @@ export function BookingWidget({ activity }: BookingWidgetProps) {
     <div className="rounded-3xl border border-border bg-card shadow-lift p-6 space-y-5">
       {/* Price header */}
       <div>
-        {activity.id === "boat-trip" ? (
+        {activity.id === "boat-trip" || activity.id === "sunset-boat" ? (
           <div>
             <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
               Tarifs

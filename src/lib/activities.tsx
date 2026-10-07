@@ -59,8 +59,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 4;
-const STORAGE_KEY = "djfun.activities.v4";
+const SEED_VERSION = 5;
+const STORAGE_KEY = "djfun.activities.v5";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -283,20 +283,24 @@ const SEED: Activity[] = [
       "Experience the beauty of Djerba at sunset with a relaxing boat trip through the lagoon. As the sun goes down, enjoy the warm colors of the sky reflected on the calm waters and take in the peaceful surroundings. This experience can be enjoyed privately with your family or as part of a small group, making it perfect for couples, families, and friends looking for a quiet and memorable moment on the water. A beautiful way to end the day and enjoy the natural beauty of Djerba’s lagoon.",
     image: boat,
     images: [boat, parasailing, jetski],
-    durationMinutes: 120,
-    durationLabel: "~2 h",
-    types: ["couple"],
+    durationMinutes: 90,
+    durationLabel: "1 h 30",
+    types: ["couple", "family"],
     active: true,
     meetingPoint: "Houmt Souk marina",
     departureLocation: "Houmt Souk marina, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT"],
-    minAge: 0,
-    options: [{ label: "Sunset cruise", price: null }],
+    minAge: 1,
+    options: [
+      { label: "Adult (Adulte)", price: 30 },
+      { label: "Kids (Enfant)", price: 15 },
+    ],
     included: [
+      "Tarifs : 30€ adult / 15€ kids (1h30 sunset tour)",
       "Welcome drink",
       "Life jackets",
-      "Sunset route along Djerba coast",
+      "Sunset route along Djerba lagoon",
     ],
     excluded: ["Dinner", "Hotel pickup"],
   },

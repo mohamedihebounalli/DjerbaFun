@@ -54,7 +54,7 @@ export function ActivityCard({ activity, className }: { activity: Activity; clas
 
         <div className="mt-auto pt-4 flex items-end justify-between gap-3">
           <div>
-            {activity.id === "boat-trip" ? (
+            {activity.id === "boat-trip" || activity.id === "sunset-boat" ? (
               <div>
                 <div className="text-xs uppercase tracking-wide text-muted-foreground">Tarifs</div>
                 <div className="font-display text-sm font-bold text-primary flex flex-wrap items-center gap-1.5 mt-0.5">
