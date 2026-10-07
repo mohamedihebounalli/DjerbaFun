@@ -58,9 +58,9 @@ export function ActivityCard({ activity, className }: { activity: Activity; clas
               <div>
                 <div className="text-xs uppercase tracking-wide text-muted-foreground">Tarifs</div>
                 <div className="font-display text-sm font-bold text-primary flex flex-wrap items-center gap-1.5 mt-0.5">
-                  <span className="whitespace-nowrap">Adulte : 30€</span>
+                  <span className="whitespace-nowrap">30€ Adult</span>
                   <span className="text-muted-foreground/60 font-normal">|</span>
-                  <span className="whitespace-nowrap">Enfant : 15€</span>
+                  <span className="whitespace-nowrap">15€ Kids</span>
                 </div>
               </div>
             ) : (

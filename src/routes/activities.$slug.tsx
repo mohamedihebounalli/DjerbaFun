@@ -127,7 +127,13 @@ function ActivityDetail() {
                 <MetaBadge
                   icon={Baby}
                   label="Min. Age"
-                  value={activity.minAge === 0 ? "All ages" : `${activity.minAge}+`}
+                  value={
+                    activity.minAge === 0
+                      ? "All ages"
+                      : activity.id === "boat-trip"
+                      ? "All ages (Baby ≤ 1)"
+                      : `${activity.minAge}+`
+                  }
                 />
               )}
               {activity.difficulty && (

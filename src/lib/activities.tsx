@@ -59,8 +59,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 3;
-const STORAGE_KEY = "djfun.activities.v3";
+const SEED_VERSION = 4;
+const STORAGE_KEY = "djfun.activities.v4";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -125,7 +125,7 @@ const SEED: Activity[] = [
     included: [
       "Life jackets for all riders",
       "Safety briefing",
-      "Up to 4 riders per banana",
+      "Minimum 4 personnes",
     ],
     excluded: ["Swimwear (bring your own)", "Personal photography"],
   },
@@ -172,7 +172,7 @@ const SEED: Activity[] = [
     departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
-    minAge: 14,
+    minAge: 3,
     options: [{ label: "1 flight", price: 40 }],
     included: [
       "Full harness & safety equipment",
@@ -189,31 +189,59 @@ const SEED: Activity[] = [
     slug: "boat-trip-djerba",
     category: "water",
     title: "Boat Trip",
-    shortDescription: "Traditional boat ride along the coast with water ski & wakeboard options.",
+    shortDescription: "Boat excursion along the coast to discover dolphins and the lagoon.",
     longDescription:
-      "Experience the thrill of gliding across the Mediterranean with a 30-minute Water Ski or Wakeboard session. Get pulled behind the boat, feel the speed of the water, and enjoy an exciting ride along the coast of Djerba. Whether you are trying it for the first time or already have experience, our team will provide the necessary guidance and equipment for a safe and enjoyable session.",
+      "Join us on a 1.5-hour boat excursion to discover the natural beauty of Djerba's coastline. Cruise along the sea in search of dolphins and admire the elegant flamingos that can often be seen in their natural habitat.\nDuring the trip, enjoy breathtaking coastal views and a relaxing swimming stop at the lagoon, where you can take a refreshing dip in the crystal-clear waters.\nA perfect experience for families, couples, and friends looking to combine nature, relaxation, and unforgettable moments at sea.",
     image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 90,
     durationLabel: "1 h 30",
-    types: ["family", "couple"],
+    types: ["family", "couple", "kids"],
     active: true,
     meetingPoint: "Houmt Souk marina",
     departureLocation: "Houmt Souk marina, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
-    minAge: 4,
+    minAge: 1,
     options: [
       { label: "Adult (Adulte)", price: 30 },
-      { label: "Child (Enfant)", price: 15 },
+      { label: "Kids (Enfant)", price: 15 },
     ],
     included: [
-      "Tarifs : Adulte 30€ | Enfant 15€",
+      "Tarifs : 30€ adult / 15€ kids (All ages welcome, baby <= 1)",
       "Life jackets",
-      "Swimming stop",
-      "On-board commentary",
+      "Swimming stop at the lagoon",
+      "Dolphin & flamingo watching",
     ],
     excluded: ["Food & drinks", "Hotel pickup"],
+  },
+  {
+    id: "water-ski-wakeboard",
+    slug: "water-ski-wakeboard-djerba",
+    category: "water",
+    title: "Water Ski & Wakeboard",
+    shortDescription: "Experience the thrill of gliding across the Mediterranean behind a speedboat.",
+    longDescription:
+      "Experience the thrill of gliding across the Mediterranean with a 30-minute Water Ski or Wakeboard session. Get pulled behind the boat, feel the speed of the water, and enjoy an exciting ride along the coast of Djerba.\n\nWhether you are trying it for the first time or already have experience, our team will provide the necessary guidance and equipment for a safe and enjoyable session.",
+    image: boat,
+    images: [boat, jetski, parasailing],
+    durationMinutes: 30,
+    durationLabel: "30 min",
+    types: ["adventure", "couple"],
+    active: true,
+    meetingPoint: "Sidi Mahrez beach",
+    departureLocation: "Sidi Mahrez beach, Djerba",
+    difficulty: "Moderate",
+    languages: ["FR", "EN", "IT", "DE", "PL"],
+    minAge: 10,
+    options: [{ label: "30 min", price: 50 }],
+    included: [
+      "Water Ski or Wakeboard equipment",
+      "Life jacket & safety briefing",
+      "Professional boat driver & instructor",
+      "Fuel included",
+    ],
+    excluded: ["Swimwear", "Personal photography"],
   },
   {
     id: "vip-boat",

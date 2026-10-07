@@ -231,13 +231,16 @@ export function BookingWidget({ activity }: BookingWidgetProps) {
             </p>
             <div className="mt-1 flex flex-wrap items-baseline gap-2">
               <span className="font-display text-2xl font-extrabold text-primary">
-                Adulte : 30€
+                30€ Adult
               </span>
               <span className="text-muted-foreground/60 font-medium">|</span>
               <span className="font-display text-2xl font-extrabold text-primary">
-                Enfant : 15€
+                15€ Kids
               </span>
             </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              All ages welcome (Baby &le; 1 free / welcome)
+            </p>
           </div>
         ) : isPriceOnRequest ? (
           <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 border border-accent/30 px-4 py-2">
