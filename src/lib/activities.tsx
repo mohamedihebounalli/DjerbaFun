@@ -59,8 +59,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 7;
-const STORAGE_KEY = "djfun.activities.v7";
+const SEED_VERSION = 8;
+const STORAGE_KEY = "djfun.activities.v8";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -215,6 +215,38 @@ const SEED: Activity[] = [
     ],
   },
   {
+    id: "catamaran-dolphin",
+    slug: "catamaran-dolphin-cruise-djerba",
+    category: "water",
+    title: "Catamaran Dolphin Cruise",
+    shortDescription: "2-hour catamaran cruise along the coast of Djerba in search of dolphins.",
+    longDescription:
+      "Enjoy a 2-hour catamaran adventure along the coast of Djerba. Sail across the turquoise waters in search of dolphins and admire the island from a unique perspective.\n\nThe excursion includes a 30-minute swimming stop offshore and complimentary soft drinks on board.\n\nDeparture times: 10:00 AM & 2:00 PM.\n\nA relaxing and unforgettable sea experience for all ages.",
+    image: boat,
+    images: [boat, parasailing, jetski],
+    durationMinutes: 120,
+    durationLabel: "2 h",
+    types: ["family", "couple", "kids"],
+    featured: true,
+    active: true,
+    meetingPoint: "Sidi Mahrez beach",
+    departureLocation: "Sidi Mahrez beach, Djerba",
+    difficulty: "Easy",
+    languages: ["FR", "EN", "IT", "DE", "PL"],
+    minAge: 0,
+    options: [{ label: "2 h", price: 35 }],
+    included: [
+      "35€ per person",
+      "30-minute swimming stop offshore",
+      "Complimentary soft drinks on board",
+      "Departure times: 10:00 AM & 2:00 PM",
+      "Sécurité à bord : Gilets de sauvetage pour tous les passagers",
+      "Bouées de sécurité",
+      "Présence d’un maître-nageur sauveteur",
+    ],
+    excluded: ["Hotel pickup", "Alcoholic beverages"],
+  },
+  {
     id: "parasailing",
     slug: "parasailing-djerba",
     category: "water",
@@ -273,6 +305,36 @@ const SEED: Activity[] = [
       "Fuel included",
     ],
     excluded: ["Swimwear", "Personal photography"],
+  },
+  {
+    id: "scuba-diving",
+    slug: "scuba-diving-djerba",
+    category: "water",
+    title: "Scuba Diving Experience in Djerba",
+    shortDescription: "Discover the underwater world of Djerba with a qualified instructor.",
+    longDescription:
+      "Discover the underwater world of Djerba with an unforgettable scuba diving experience, accompanied by a qualified instructor.\n\nHow the Activity Works:\n\n• Equipment Preparation: Your diving equipment is prepared before the activity.\n\n• Safety Briefing: Your instructor will explain the basics of scuba diving, essential techniques, and safety instructions before your dive.\n\n• Boat Trip: Board the boat and head to the selected diving site off the coast of Djerba.\n\n• Scuba Dive: Explore the underwater world of Djerba with your instructor in complete safety. The dive lasts approximately 30 to 50 minutes, depending on your breathing and air consumption underwater.\n\n• Return: After your underwater adventure, return by boat and enjoy an unforgettable experience discovering the marine life and underwater landscapes of Djerba.",
+    image: boat,
+    images: [boat, parasailing, jetski],
+    durationMinutes: 120,
+    durationLabel: "2 h",
+    types: ["adventure", "couple"],
+    featured: true,
+    active: true,
+    meetingPoint: "Sidi Mahrez beach",
+    departureLocation: "Sidi Mahrez beach, Djerba",
+    difficulty: "Moderate",
+    languages: ["FR", "EN", "IT", "DE", "PL"],
+    minAge: 10,
+    options: [{ label: "2 h", price: 50 }],
+    included: [
+      "50€ per person",
+      "Full scuba diving equipment",
+      "Qualified instructor accompaniment",
+      "Safety briefing & boat trip to diving site",
+      "30 to 50 min underwater dive",
+    ],
+    excluded: ["Personal underwater photography", "Hotel pickup"],
   },
   {
     id: "vip-boat",
