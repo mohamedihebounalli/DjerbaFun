@@ -59,8 +59,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 8;
-const STORAGE_KEY = "djfun.activities.v8";
+const SEED_VERSION = 9;
+const STORAGE_KEY = "djfun.activities.v9";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -236,7 +236,6 @@ const SEED: Activity[] = [
     minAge: 0,
     options: [{ label: "2 h", price: 35 }],
     included: [
-      "35€ per person",
       "30-minute swimming stop offshore",
       "Complimentary soft drinks on board",
       "Departure times: 10:00 AM & 2:00 PM",
@@ -328,7 +327,6 @@ const SEED: Activity[] = [
     minAge: 10,
     options: [{ label: "2 h", price: 50 }],
     included: [
-      "50€ per person",
       "Full scuba diving equipment",
       "Qualified instructor accompaniment",
       "Safety briefing & boat trip to diving site",
