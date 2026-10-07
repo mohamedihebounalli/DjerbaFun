@@ -58,8 +58,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 12;
-const STORAGE_KEY = "djfun.activities.v12";
+const SEED_VERSION = 13;
+const STORAGE_KEY = "djfun.activities.v13";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -301,7 +301,7 @@ const SEED: Activity[] = [
     title: "Scuba Diving Experience in Djerba",
     shortDescription: "Discover the underwater world of Djerba with a qualified instructor.",
     longDescription:
-      "Discover the underwater world of Djerba with an unforgettable scuba diving experience, accompanied by a qualified instructor.\n\nHow the Activity Works:\n\n• Equipment Preparation\nYour diving equipment is prepared before the activity.\n\n• Safety Briefing\nYour instructor will explain the basics of scuba diving, essential techniques, and safety instructions before your dive.\n\n• Boat Trip\nBoard the boat and head to the selected diving site off the coast of Djerba.\n\n• Scuba Dive\nExplore the underwater world of Djerba with your instructor in complete safety. The dive lasts approximately 30 to 50 minutes, depending on your breathing and air consumption underwater.\n\n• Return\nAfter your underwater adventure, return by boat and enjoy an unforgettable experience discovering the marine life and underwater landscapes of Djerba.",
+      "Discover the underwater world of Djerba with an unforgettable scuba diving experience, accompanied by a qualified instructor.\n\nHow the Activity Works:\n• Equipment Preparation: Your diving equipment is prepared before the activity.\n• Safety Briefing: Your instructor will explain the basics of scuba diving, essential techniques, and safety instructions before your dive.\n• Boat Trip: Board the boat and head to the selected diving site off the coast of Djerba.\n• Scuba Dive: Explore the underwater world of Djerba with your instructor in complete safety. The dive lasts approximately 30 to 50 minutes, depending on your breathing and air consumption underwater.\n• Return: After your underwater adventure, return by boat and enjoy an unforgettable experience discovering the marine life and underwater landscapes of Djerba.",
     image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 120,
