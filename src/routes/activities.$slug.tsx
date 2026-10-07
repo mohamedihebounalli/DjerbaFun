@@ -201,47 +201,52 @@ function ActivityDetail() {
               </div>
             )}
 
-            {/* Meeting point / map placeholder */}
+            {/* Meeting point / directions */}
             {activity.meetingPoint && (
               <div>
                 <h2 className="font-display text-xl font-bold mb-4">Meeting point</h2>
-                <div className="rounded-2xl border border-border overflow-hidden">
-                  {/* Map placeholder */}
-                  <div className="relative h-52 bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="h-12 w-12 rounded-full bg-primary/10 border-4 border-primary/30 flex items-center justify-center mx-auto mb-3">
-                        <MapPin className="h-6 w-6 text-primary" />
-                      </div>
-                      <p className="font-display font-bold text-foreground">
-                        {activity.meetingPoint}
-                      </p>
-                      <p className="text-sm text-muted-foreground mt-1">Djerba, Tunisia</p>
-                    </div>
-                    {/* Decorative grid lines */}
-                    <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(var(--color-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-primary) 1px, transparent 1px)",
-                        backgroundSize: "40px 40px",
-                      }}
-                    />
+                <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden p-6 sm:p-8 space-y-6">
+                  {/* Rappel d'arrivée */}
+                  <div className="flex items-center gap-3 bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 p-4 rounded-xl text-sm font-medium">
+                    <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
+                    <span>Please arrive <strong>15 minutes</strong> before the start of your activity.</span>
                   </div>
-                  <div className="p-4 bg-card flex items-center gap-3">
-                    <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
-                    <div>
-                      <p className="text-sm font-semibold">{activity.meetingPoint}</p>
-                      {activity.departureLocation && (
-                        <p className="text-xs text-muted-foreground">{activity.departureLocation}</p>
-                      )}
+
+                  {/* Étapes de guidage */}
+                  <div className="space-y-4 py-2">
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+                        1
+                      </div>
+                      <p className="text-foreground/80 text-sm sm:text-base leading-relaxed">
+                        The meeting point is located at the end of <strong>Hotel Castille Street</strong>, just before <strong>Hotel Sidi Slim</strong>. Follow the camel path leading to the beach (approximately a 3-minute walk).
+                      </p>
                     </div>
+
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+                        2
+                      </div>
+                      <p className="text-foreground/80 text-sm sm:text-base leading-relaxed">
+                        Once you reach the beach, you will find our <strong>water sports station on the right-hand side</strong>. Our team will be there to welcome you and assist you with your activity.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Footer : Aide & CTA Google Maps */}
+                  <div className="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <p className="text-xs sm:text-sm text-muted-foreground">
+                      If you have any difficulty finding us, please contact us before your arrival.
+                    </p>
+
                     <a
-                      href={`https://www.google.com/maps/search/${encodeURIComponent(activity.meetingPoint + " Djerba Tunisia")}`}
+                      href="https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/"
                       target="_blank"
-                      rel="noreferrer"
-                      className="ml-auto text-xs text-primary hover:underline font-semibold flex-shrink-0"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm rounded-xl transition-colors shrink-0 shadow-sm"
                     >
-                      Open in Maps →
+                      <MapPin className="w-4 h-4 text-accent" />
+                      Open in Google Maps &rarr;
                     </a>
                   </div>
                 </div>
