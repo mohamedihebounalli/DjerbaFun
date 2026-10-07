@@ -229,6 +229,42 @@ function ActivityDetail() {
                       </div>
                     </div>
 
+                    {/* Map Preview Embed */}
+                    <div className="w-full rounded-2xl overflow-hidden border border-border shadow-xs relative group my-4">
+                      <div className="w-full h-[260px] sm:h-[320px] relative bg-muted">
+                        <iframe
+                          title="Land Meeting Point Map Preview"
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.4231842019126!2d11.021927176274472!3d33.76375903362947!2m3!1f0!2f0!3f0!2m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13aaa30026e6d11b%3A0x6b840003b578c728!2sSports%20Nautiques%20-%20B20!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
+                          className="w-full h-full border-0 grayscale-[20%] contrast-[105%] group-hover:grayscale-0 transition-all duration-300"
+                          allowFullScreen={false}
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                        />
+
+                        {/* Floating info badge */}
+                        <div className="absolute top-4 left-4 bg-background/95 backdrop-blur-md px-3 py-2 rounded-xl shadow-md border border-border flex items-center gap-2 pointer-events-none">
+                          <span className="relative flex h-2.5 w-2.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                          </span>
+                          <span className="text-xs font-semibold text-foreground">Point de rendez-vous — Hôtel Castille</span>
+                        </div>
+
+                        {/* CTA Overlay interactif */}
+                        <div className="absolute bottom-4 right-4">
+                          <a
+                            href="https://maps.google.com/?q=Hotel+Castille+Djerba"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 bg-slate-900/90 hover:bg-slate-900 text-white font-medium text-xs sm:text-sm rounded-xl shadow-lg backdrop-blur-md transition-all flex items-center gap-2 hover:scale-[1.02]"
+                          >
+                            <Navigation className="w-4 h-4 text-amber-400" />
+                            Ouvrir dans Google Maps
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Footer : Aide & Bouton Maps */}
                     <div className="pt-4 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <p className="text-xs sm:text-sm text-muted-foreground">
@@ -273,6 +309,42 @@ function ActivityDetail() {
                         <p className="text-foreground/80 text-sm sm:text-base leading-relaxed">
                           Once you reach the beach, you will find our <strong>water sports station on the right-hand side</strong>. Our team will be there to welcome you and assist you with your activity.
                         </p>
+                      </div>
+                    </div>
+
+                    {/* Map Preview Embed */}
+                    <div className="w-full rounded-2xl overflow-hidden border border-border shadow-xs relative group my-4">
+                      <div className="w-full h-[260px] sm:h-[320px] relative bg-muted">
+                        <iframe
+                          title="Water Meeting Point Map Preview"
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.4231842019126!2d11.021927176274472!3d33.76375903362947!2m3!1f0!2f0!3f0!2m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13aaa30026e6d11b%3A0x6b840003b578c728!2sSports%20Nautiques%20-%20B20!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
+                          className="w-full h-full border-0 grayscale-[20%] contrast-[105%] group-hover:grayscale-0 transition-all duration-300"
+                          allowFullScreen={false}
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                        />
+
+                        {/* Floating info badge */}
+                        <div className="absolute top-4 left-4 bg-background/95 backdrop-blur-md px-3 py-2 rounded-xl shadow-md border border-border flex items-center gap-2 pointer-events-none">
+                          <span className="relative flex h-2.5 w-2.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                          </span>
+                          <span className="text-xs font-semibold text-foreground">Station B20 — Point de départ</span>
+                        </div>
+
+                        {/* CTA Overlay interactif */}
+                        <div className="absolute bottom-4 right-4">
+                          <a
+                            href="https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 bg-slate-900/90 hover:bg-slate-900 text-white font-medium text-xs sm:text-sm rounded-xl shadow-lg backdrop-blur-md transition-all flex items-center gap-2 hover:scale-[1.02]"
+                          >
+                            <MapPin className="w-4 h-4 text-amber-400" />
+                            Ouvrir dans Google Maps
+                          </a>
+                        </div>
                       </div>
                     </div>
 
