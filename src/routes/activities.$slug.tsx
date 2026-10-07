@@ -146,9 +146,6 @@ function ActivityDetail() {
                   <span className="text-sm font-semibold font-display">{activity.difficulty}</span>
                 </div>
               )}
-              {activity.departureLocation && (
-                <MetaBadge icon={MapPin} label="Departure" value={activity.departureLocation} />
-              )}
             </div>
 
             {/* Description or Timeline */}
@@ -156,11 +153,11 @@ function ActivityDetail() {
               <h2 className="font-display text-xl font-bold mb-3">About this experience</h2>
               {isExcursion && activity.itinerary && activity.itinerary.length > 0 ? (
                 <div className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">{activity.longDescription}</p>
+                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{activity.longDescription}</p>
                   <ExcursionTimeline itinerary={activity.itinerary} />
                 </div>
               ) : (
-                <p className="text-muted-foreground leading-relaxed">{activity.longDescription}</p>
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{activity.longDescription}</p>
               )}
             </div>
 

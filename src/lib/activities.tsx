@@ -49,7 +49,6 @@ export interface Activity {
   featured?: boolean;
   active: boolean;
   meetingPoint?: string;
-  departureLocation?: string;
   difficulty?: Difficulty;
   languages?: string[];
   minAge?: number;
@@ -59,8 +58,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 9;
-const STORAGE_KEY = "djfun.activities.v9";
+const SEED_VERSION = 12;
+const STORAGE_KEY = "djfun.activities.v12";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -79,7 +78,6 @@ const SEED: Activity[] = [
     types: ["family", "kids"],
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT"],
     minAge: 6,
@@ -106,7 +104,6 @@ const SEED: Activity[] = [
     types: ["family", "adventure"],
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE"],
     minAge: 8,
@@ -129,7 +126,6 @@ const SEED: Activity[] = [
     types: ["family", "couple", "kids"],
     active: true,
     meetingPoint: "Houmt Souk marina",
-    departureLocation: "Houmt Souk marina, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 1,
@@ -160,7 +156,6 @@ const SEED: Activity[] = [
     types: ["couple", "family"],
     active: true,
     meetingPoint: "Houmt Souk marina",
-    departureLocation: "Houmt Souk marina, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT"],
     minAge: 1,
@@ -193,7 +188,6 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 16,
@@ -230,15 +224,12 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 0,
     options: [{ label: "2 h", price: 35 }],
     included: [
-      "30-minute swimming stop offshore",
       "Complimentary soft drinks on board",
-      "Departure times: 10:00 AM & 2:00 PM",
       "Sécurité à bord : Gilets de sauvetage pour tous les passagers",
       "Bouées de sécurité",
       "Présence d’un maître-nageur sauveteur",
@@ -262,7 +253,6 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 3,
@@ -292,7 +282,6 @@ const SEED: Activity[] = [
     types: ["adventure", "couple"],
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 10,
@@ -312,7 +301,7 @@ const SEED: Activity[] = [
     title: "Scuba Diving Experience in Djerba",
     shortDescription: "Discover the underwater world of Djerba with a qualified instructor.",
     longDescription:
-      "Discover the underwater world of Djerba with an unforgettable scuba diving experience, accompanied by a qualified instructor.\n\nHow the Activity Works:\n\n• Equipment Preparation: Your diving equipment is prepared before the activity.\n\n• Safety Briefing: Your instructor will explain the basics of scuba diving, essential techniques, and safety instructions before your dive.\n\n• Boat Trip: Board the boat and head to the selected diving site off the coast of Djerba.\n\n• Scuba Dive: Explore the underwater world of Djerba with your instructor in complete safety. The dive lasts approximately 30 to 50 minutes, depending on your breathing and air consumption underwater.\n\n• Return: After your underwater adventure, return by boat and enjoy an unforgettable experience discovering the marine life and underwater landscapes of Djerba.",
+      "Discover the underwater world of Djerba with an unforgettable scuba diving experience, accompanied by a qualified instructor.\n\nHow the Activity Works:\n\n• Equipment Preparation\nYour diving equipment is prepared before the activity.\n\n• Safety Briefing\nYour instructor will explain the basics of scuba diving, essential techniques, and safety instructions before your dive.\n\n• Boat Trip\nBoard the boat and head to the selected diving site off the coast of Djerba.\n\n• Scuba Dive\nExplore the underwater world of Djerba with your instructor in complete safety. The dive lasts approximately 30 to 50 minutes, depending on your breathing and air consumption underwater.\n\n• Return\nAfter your underwater adventure, return by boat and enjoy an unforgettable experience discovering the marine life and underwater landscapes of Djerba.",
     image: boat,
     images: [boat, parasailing, jetski],
     durationMinutes: 120,
@@ -321,7 +310,6 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 10,
@@ -351,7 +339,6 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Houmt Souk marina",
-    departureLocation: "Houmt Souk marina, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 0,
@@ -381,7 +368,6 @@ const SEED: Activity[] = [
     types: ["family", "kids"],
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 4,
@@ -409,7 +395,6 @@ const SEED: Activity[] = [
     types: ["family", "couple"],
     active: true,
     meetingPoint: "Sidi Mahrez beach",
-    departureLocation: "Sidi Mahrez beach, Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT"],
     minAge: 8,
@@ -439,7 +424,6 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Djerba Explore area",
-    departureLocation: "Djerba Explore, Zone Touristique",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE"],
     minAge: 16,
@@ -474,7 +458,6 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Djerba Explore area",
-    departureLocation: "Djerba Explore, Zone Touristique",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE"],
     minAge: 16,
@@ -506,7 +489,6 @@ const SEED: Activity[] = [
     badge: "Culture",
     active: true,
     meetingPoint: "Your hotel lobby",
-    departureLocation: "Hotel pickup across Djerba",
     difficulty: "Easy",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 0,
@@ -580,7 +562,6 @@ const SEED: Activity[] = [
     badge: "Desert Adventure",
     active: true,
     meetingPoint: "Your hotel lobby",
-    departureLocation: "Hotel pickup across Djerba",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE"],
     minAge: 8,
@@ -654,7 +635,6 @@ const SEED: Activity[] = [
     featured: true,
     active: true,
     meetingPoint: "Your hotel lobby",
-    departureLocation: "Hotel pickup across Djerba",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE", "PL"],
     minAge: 10,

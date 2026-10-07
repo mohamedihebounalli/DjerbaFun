@@ -26,7 +26,6 @@ const BLANK: Omit<Activity, "id"> = {
   options: [{ label: "", price: null }],
   active: true,
   meetingPoint: "",
-  departureLocation: "",
   difficulty: "Easy",
   languages: ["FR", "EN"],
   minAge: 0,
