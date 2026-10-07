@@ -9,6 +9,7 @@ import {
   XCircle,
   Gauge,
   Baby,
+  Navigation,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useActivities } from "@/lib/activities";
@@ -205,51 +206,94 @@ function ActivityDetail() {
             {activity.meetingPoint && (
               <div>
                 <h2 className="font-display text-xl font-bold mb-4">Meeting point</h2>
-                <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden p-6 sm:p-8 space-y-6">
-                  {/* Rappel d'arrivée */}
-                  <div className="flex items-center gap-3 bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 p-4 rounded-xl text-sm font-medium">
-                    <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
-                    <span>Please arrive <strong>15 minutes</strong> before the start of your activity.</span>
-                  </div>
-
-                  {/* Étapes de guidage */}
-                  <div className="space-y-4 py-2">
-                    <div className="flex gap-4 items-start">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
-                        1
-                      </div>
-                      <p className="text-foreground/80 text-sm sm:text-base leading-relaxed">
-                        The meeting point is located at the end of <strong>Hotel Castille Street</strong>, just before <strong>Hotel Sidi Slim</strong>. Follow the camel path leading to the beach (approximately a 3-minute walk).
-                      </p>
+                {activity.category === "land" ? (
+                  /* Terrestrial / Land Activity Meeting Point */
+                  <div className="bg-gradient-to-br from-amber-500/10 via-card to-orange-500/10 rounded-2xl border border-amber-500/30 shadow-sm overflow-hidden p-6 sm:p-8 space-y-6">
+                    {/* Rappel d'arrivée 15 min */}
+                    <div className="flex items-center gap-3 bg-amber-500/15 border border-amber-500/30 text-amber-950 dark:text-amber-200 p-4 rounded-xl text-sm font-medium shadow-sm">
+                      <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
+                      <span>Please arrive <strong>15 minutes</strong> before the start of your activity.</span>
                     </div>
 
-                    <div className="flex gap-4 items-start">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
-                        2
+                    {/* Bloc Localisation Repère */}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 bg-card rounded-xl border border-border shadow-sm">
+                      <div className="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                        <MapPin className="w-6 h-6" />
                       </div>
-                      <p className="text-foreground/80 text-sm sm:text-base leading-relaxed">
-                        Once you reach the beach, you will find our <strong>water sports station on the right-hand side</strong>. Our team will be there to welcome you and assist you with your activity.
+                      <div>
+                        <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">Landmark / Main Spot</span>
+                        <h3 className="text-lg font-bold text-foreground mt-0.5">In front of Hotel Castille</h3>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          The meeting point is located directly in front of Hotel Castille.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Footer : Aide & Bouton Maps */}
+                    <div className="pt-4 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <p className="text-xs sm:text-sm text-muted-foreground">
+                        If you have any difficulty finding us, please contact us before your arrival.
                       </p>
+
+                      <a
+                        href="https://maps.google.com/?q=Hotel+Castille+Djerba"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-amber-950 font-semibold text-sm rounded-xl transition-colors shrink-0 shadow-sm"
+                      >
+                        <Navigation className="w-4 h-4" />
+                        Open Location in Maps &rarr;
+                      </a>
                     </div>
                   </div>
+                ) : (
+                  /* Water Activity Meeting Point */
+                  <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden p-6 sm:p-8 space-y-6">
+                    {/* Rappel d'arrivée */}
+                    <div className="flex items-center gap-3 bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 p-4 rounded-xl text-sm font-medium">
+                      <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
+                      <span>Please arrive <strong>15 minutes</strong> before the start of your activity.</span>
+                    </div>
 
-                  {/* Footer : Aide & CTA Google Maps */}
-                  <div className="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <p className="text-xs sm:text-sm text-muted-foreground">
-                      If you have any difficulty finding us, please contact us before your arrival.
-                    </p>
+                    {/* Étapes de guidage */}
+                    <div className="space-y-4 py-2">
+                      <div className="flex gap-4 items-start">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+                          1
+                        </div>
+                        <p className="text-foreground/80 text-sm sm:text-base leading-relaxed">
+                          The meeting point is located at the end of <strong>Hotel Castille Street</strong>, just before <strong>Hotel Sidi Slim</strong>. Follow the camel path leading to the beach (approximately a 3-minute walk).
+                        </p>
+                      </div>
 
-                    <a
-                      href="https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm rounded-xl transition-colors shrink-0 shadow-sm"
-                    >
-                      <MapPin className="w-4 h-4 text-accent" />
-                      Open in Google Maps &rarr;
-                    </a>
+                      <div className="flex gap-4 items-start">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
+                          2
+                        </div>
+                        <p className="text-foreground/80 text-sm sm:text-base leading-relaxed">
+                          Once you reach the beach, you will find our <strong>water sports station on the right-hand side</strong>. Our team will be there to welcome you and assist you with your activity.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Footer : Aide & CTA Google Maps */}
+                    <div className="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <p className="text-xs sm:text-sm text-muted-foreground">
+                        If you have any difficulty finding us, please contact us before your arrival.
+                      </p>
+
+                      <a
+                        href="https://www.google.com/maps/place/Sports+Nautiques+-+B20/@33.7637547,11.0245021,892m/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm rounded-xl transition-colors shrink-0 shadow-sm"
+                      >
+                        <MapPin className="w-4 h-4 text-accent" />
+                        Open in Google Maps &rarr;
+                      </a>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
 
