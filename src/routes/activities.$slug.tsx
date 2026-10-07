@@ -215,18 +215,14 @@ function ActivityDetail() {
                       <span>Please arrive <strong>15 minutes</strong> before the start of your activity.</span>
                     </div>
 
-                    {/* Bloc Localisation Repère */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 bg-card rounded-xl border border-border shadow-sm">
-                      <div className="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
-                        <MapPin className="w-6 h-6" />
+                    {/* Instruction principale */}
+                    <div className="flex gap-4 items-start py-2">
+                      <div className="w-10 h-10 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                        <MapPin className="w-5 h-5" />
                       </div>
-                      <div>
-                        <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">Landmark / Main Spot</span>
-                        <h3 className="text-lg font-bold text-foreground mt-0.5">In front of Hotel Castille</h3>
-                        <p className="text-muted-foreground text-sm mt-1">
-                          The meeting point is located directly in front of Hotel Castille.
-                        </p>
-                      </div>
+                      <p className="text-foreground/90 text-sm sm:text-base leading-relaxed pt-1">
+                        The meeting point is located <strong>in front of Hotel Castille</strong>.
+                      </p>
                     </div>
 
                     {/* Map Preview Embed */}
