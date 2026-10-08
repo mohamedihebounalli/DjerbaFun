@@ -5,6 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { Clock, MessageCircle } from "lucide-react";
 
 import { useI18n } from "@/lib/i18n";
+import { ActivityList } from "@/components/ActivityList";
 import { useActivities } from "@/lib/activities";
 import { SearchBar, applyFilters, DEFAULT_FILTERS, type Filters } from "@/components/SearchBar";
 import { Badge } from "@/components/ui/badge";
@@ -143,20 +144,7 @@ function Excursions() {
       </section>
 
       <section className="container-page py-12 md:py-16">
-        <div className="text-sm text-muted-foreground mb-6">
-          {list.length} {t("search.results")}
-        </div>
-        {list.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-border p-10 text-center text-muted-foreground">
-            No excursions match your filters. Try resetting them.
-          </div>
-        ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {list.map((a) => (
-              <ExcursionCard key={a.id} activity={a} />
-            ))}
-          </div>
-        )}
+        <ActivityList list={list} />
       </section>
     </>
   );

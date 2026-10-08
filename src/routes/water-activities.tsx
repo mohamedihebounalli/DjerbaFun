@@ -4,7 +4,7 @@ import { Waves } from "lucide-react";
 
 import { useI18n } from "@/lib/i18n";
 import { useActivities } from "@/lib/activities";
-import { ActivityCard } from "@/components/ActivityCard";
+import { ActivityList } from "@/components/ActivityList";
 import { SearchBar, applyFilters, DEFAULT_FILTERS, type Filters } from "@/components/SearchBar";
 
 export const Route = createFileRoute("/water-activities")({
@@ -49,18 +49,7 @@ function WaterActivities() {
       </section>
 
       <section className="container-page py-12 md:py-16">
-        <div className="text-sm text-muted-foreground mb-6">
-          {list.length} {t("search.results")}
-        </div>
-        {list.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-border p-10 text-center text-muted-foreground">
-            No activities match your filters. Try resetting them.
-          </div>
-        ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {list.map((a) => <ActivityCard key={a.id} activity={a} />)}
-          </div>
-        )}
+        <ActivityList list={list} />
       </section>
     </>
   );
