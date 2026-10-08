@@ -46,7 +46,7 @@ export function ExcursionTimeline({ itinerary }: ExcursionTimelineProps) {
       <div className="bg-primary-soft/40 rounded-2xl p-6">
         <h3 className="font-display text-lg font-bold mb-6 flex items-center gap-2">
           <span className="inline-block h-1 w-6 rounded-full bg-primary" />
-          Itinerary
+          Programme de l'excursion
         </h3>
         <TimelineDay steps={itinerary[0].steps} />
       </div>
@@ -57,7 +57,7 @@ export function ExcursionTimeline({ itinerary }: ExcursionTimelineProps) {
     <div className="bg-primary-soft/40 rounded-2xl p-6">
       <h3 className="font-display text-lg font-bold mb-5 flex items-center gap-2">
         <span className="inline-block h-1 w-6 rounded-full bg-primary" />
-        Itinerary
+        Programme de l'excursion
       </h3>
       <Tabs defaultValue="day-1">
         <TabsList className="mb-6 rounded-full bg-background border border-border p-1 w-full sm:w-auto">
@@ -67,7 +67,7 @@ export function ExcursionTimeline({ itinerary }: ExcursionTimelineProps) {
               value={`day-${day.day}`}
               className="rounded-full flex-1 sm:flex-none data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-sm font-semibold"
             >
-              Day {day.day}
+              Jour {day.day}
             </TabsTrigger>
           ))}
         </TabsList>
@@ -80,7 +80,7 @@ export function ExcursionTimeline({ itinerary }: ExcursionTimelineProps) {
               <div className="mt-6 rounded-xl bg-accent/10 border border-accent/20 p-4 flex items-center gap-3">
                 <span className="text-2xl">🌙</span>
                 <p className="text-sm text-accent-foreground font-medium">
-                  Tonight: overnight stay in a traditional Berber desert camp under the Milky Way.
+                  Cette nuit : hébergement en campement saharien traditionnel sous les étoiles.
                 </p>
               </div>
             )}

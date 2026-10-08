@@ -10,6 +10,7 @@ import {
   Gauge,
   Baby,
   Navigation,
+  Bus,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useActivities } from "@/lib/activities";
@@ -199,8 +200,22 @@ function ActivityDetail() {
               </div>
             )}
 
-            {/* Meeting point / directions */}
-            {activity.meetingPoint && (
+            {/* Pick-up / Meeting point */}
+            {isExcursion ? (
+              <div className="mb-8">
+                <h2 className="font-display text-xl font-bold mb-4">Prise en charge & Transport</h2>
+                <div className="bg-gradient-to-br from-blue-50/50 via-card to-indigo-50/30 rounded-2xl border border-blue-100 dark:border-blue-900/30 shadow-sm overflow-hidden p-6 sm:p-8">
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                      <Bus className="w-5 h-5" />
+                    </div>
+                    <p className="text-foreground/90 text-sm sm:text-base leading-relaxed pt-1">
+                      Prise en charge directe à votre hôtel ou lieu de séjour à Djerba à 07h30 (et retour inclus en fin d'excursion).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : activity.meetingPoint && (
               <div>
                 <h2 className="font-display text-xl font-bold mb-4">Meeting point</h2>
                 {activity.category === "land" ? (
