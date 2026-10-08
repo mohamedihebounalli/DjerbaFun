@@ -34,7 +34,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-accent">
+                    <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-accent">
             {t("footer.follow")}
           </h3>
           <ul className="mt-4 space-y-3 text-sm">
@@ -45,9 +45,29 @@ export function Footer() {
               </a>
             </li>
             <li>
+              <a href="https://www.facebook.com/water.sports.B20" target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 hover:text-accent">
+                <Facebook className="h-4 w-4" /> Facebook
+              </a>
+            </li>
+            <li>
               <a href="https://www.instagram.com/water_sports_b20_djerba" target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 hover:text-accent">
                 <Instagram className="h-4 w-4" /> Instagram
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@watersportsb20" target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 hover:text-accent">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.34 2.88 2.88 0 012.31-4.53 2.66 2.66 0 011.61.53V9.45a6.3 6.3 0 00-1.61-.2 6.33 6.33 0 106.33 6.33V8.66a8.3 8.3 0 003.78 1.48V6.69z"/>
+                </svg> TikTok
+              </a>
+            </li>
+            <li>
+              <a href="https://maps.app.goo.gl/X7J6M797b5XWuhLu7" target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 hover:text-accent">
+                <MapPin className="h-4 w-4" /> Djerba, Tunisie
               </a>
             </li>
           </ul>

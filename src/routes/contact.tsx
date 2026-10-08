@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, MessageCircle, Mail, MapPin, Send } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Send, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -69,7 +69,12 @@ function ContactPage() {
                 </div>
               </a>
 
-              <div className="flex items-start gap-4 p-3 rounded-2xl border border-transparent">
+                            <a
+                href="https://maps.app.goo.gl/X7J6M797b5XWuhLu7"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-start gap-4 p-3 rounded-2xl hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
+              >
                 <div className="h-11 w-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
                   <MapPin className="h-5 w-5" />
                 </div>
@@ -77,22 +82,55 @@ function ContactPage() {
                   <p className="font-semibold text-base">Location</p>
                   <p className="text-muted-foreground text-sm">Djerba, Tunisia</p>
                 </div>
+              </a>
+
+              <div className="flex items-center gap-3 pt-2 pl-3">
+                <a
+                  href="https://www.facebook.com/water.sports.B20"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@watersportsb20"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-900 hover:text-white dark:hover:bg-slate-100 dark:hover:text-black flex items-center justify-center transition-colors"
+                  aria-label="TikTok"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.34 2.88 2.88 0 012.31-4.53 2.66 2.66 0 011.61.53V9.45a6.3 6.3 0 00-1.61-.2 6.33 6.33 0 106.33 6.33V8.66a8.3 8.3 0 003.78 1.48V6.69z"/>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Map replaced Operating Hours here */}
-          <div className="rounded-3xl overflow-hidden shadow-sm border border-border h-[280px]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105260.40776595568!2d10.85246735!3d33.8055613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13aa972304856ba7%3A0xc3b83988d5786a51!2sDjerba%20Island!5e0!3m2!1sen!2stn!4v1700000000000!5m2!1sen!2stn"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Djerba Location Map"
-            ></iframe>
+          <div className="space-y-4">
+            <div className="rounded-3xl overflow-hidden shadow-sm border border-border h-[280px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.4231842019126!2d11.021927176274472!3d33.76375903362947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13aaa30026e6d11b%3A0x6b840003b578c728!2sSports%20Nautiques%20-%20B20!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Djerba Location Map"
+              ></iframe>
+            </div>
+            <a
+              href="https://maps.app.goo.gl/X7J6M797b5XWuhLu7"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-2 w-full p-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-semibold rounded-2xl transition-transform hover:scale-[1.02]"
+            >
+              <MapPin className="w-5 h-5" />
+              View our location on Google Maps &rarr;
+            </a>
           </div>
         </div>
 
