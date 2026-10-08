@@ -58,8 +58,8 @@ export interface Activity {
 }
 
 /** Content is versioned so we can migrate stored copies later. */
-const SEED_VERSION = 13;
-const STORAGE_KEY = "djfun.activities.v13";
+const SEED_VERSION = 14;
+const STORAGE_KEY = "djfun.activities.v14";
 
 const SEED: Activity[] = [
   // ─── WATER ────────────────────────────────────────────────────────────────
@@ -473,263 +473,191 @@ category: "water",
 
   // ─── EXCURSIONS ───────────────────────────────────────────────────────────
   {
-    id: "tour-djerba",
-    slug: "tour-ile-djerba",
+    id: "tour-ile-djerba-demi",
+    slug: "tour-ile-djerba-demi",
     category: "excursions",
-    title: "Tour de l'île de Djerba",
-    shortDescription: "Full day discovering Houmt Souk, El Ghriba, Guellala and more.",
-    longDescription:
-      "Djerba is a treasure trove of culture, history, and beauty — and this full-day island tour reveals it all. From the ancient Roman road and the famous El Ghriba synagogue to the potters' village of Guellala and the bustling Houmt Souk market, you'll experience the island's soul. A traditional Tunisian lunch is included mid-day, and your guide provides fascinating historical commentary throughout.",
+    title: "EXCURSION TOUR DE L'ILE DE DJERBA UNE DEMI-JOURNÉE",
+    shortDescription: "Explorez la fascinante île de Djerba en demi-journée grâce à notre programme de visite soigneusement conçu.",
+    longDescription: "Explorez la fascinante île de Djerba en demi-journée grâce à notre programme de visite soigneusement conçu.\n\nProgramme :\n• 07h30 : Prise en charge sur votre lieu de séjour à Djerba.\n• Mosquée souterraine : Une expérience unique dans un trésor caché de l'île pour plonger dans son histoire et sa spiritualité.\n• Village des potiers de Guelalla & Musée : Découverte de l'art millénaire de la poterie et démonstration traditionnelle.\n• La Synagogue de la Ghriba : Visite de la plus ancienne synagogue du Maghreb, un site historique majeur.\n• Village d'Erriadh (DjerbaHood) : Découverte du Street Art avec plus de 100 fresques réalisées par des artistes du monde entier.\n• 12h30 : Retour et dépose à votre lieu de séjour.",
     image: excursionDjerba,
-    images: [excursionDjerba, boat, camel],
-    durationMinutes: 480,
-    durationLabel: "Full day",
+    images: [excursionDjerba],
+    durationMinutes: 300,
+    durationLabel: "Demi-journée",
     types: ["family", "couple"],
     badge: "Culture",
     active: true,
-    meetingPoint: "Your hotel lobby",
+    meetingPoint: "Prise en charge à votre lieu de séjour",
     difficulty: "Easy",
-    languages: ["FR", "EN", "IT", "DE", "PL"],
+    languages: ["FR", "EN", "IT", "DE"],
     minAge: 0,
-    options: [{ label: "Full day", price: null }],
+    options: [{ label: "Adulte", price: 40 }],
     included: [
-      "Hotel pickup & drop-off",
-      "Air-conditioned minibus",
-      "Licensed multilingual guide",
-      "Houmt Souk market visit",
-      "Guellala Pottery Village",
-      "Traditional Tunisian lunch",
-      "El Ghriba synagogue entry",
+      "Prise en charge et retour à l'hôtel",
+      "Visite de la Mosquée souterraine",
+      "Visite du Village des potiers de Guelalla & Musée",
+      "Visite de la Synagogue de la Ghriba",
+      "Découverte d'Erriadh (DjerbaHood)"
     ],
     excluded: [
-      "Personal shopping",
-      "Drinks beyond lunch",
-      "Tips for guide & driver",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Tour de l'île de Djerba",
-        steps: [
-          {
-            time: "08:30",
-            label: "Hotel Pickup",
-            description: "Your guide meets you at your hotel lobby. Board the air-conditioned minibus.",
-          },
-          {
-            time: "09:15",
-            label: "Roman Road & Coastal Viewpoint",
-            description: "Drive along the ancient Roman paved road connecting the island to the mainland — a 2,000-year-old marvel still in use today.",
-          },
-          {
-            time: "10:30",
-            label: "Guellala Pottery Village",
-            description: "Visit artisan workshops where local potters craft terracotta using techniques unchanged for centuries. Browse and purchase authentic pieces.",
-          },
-          {
-            time: "12:30",
-            label: "Houmt Souk Market & Lunch",
-            description: "Explore the lively medina market, then sit down to a traditional Tunisian lunch featuring fresh fish, harissa, and Djerba pastries.",
-          },
-          {
-            time: "15:00",
-            label: "Fadhloun Mosque & El Ghriba Synagogue",
-            description: "Visit two of Djerba's most iconic religious sites — the photogenic Fadhloun Mosque and the El Ghriba, one of the oldest synagogues in the world.",
-          },
-          {
-            time: "17:00",
-            label: "Return to Hotel",
-            description: "Comfortable ride back to your hotel, arriving before evening.",
-          },
-        ],
-      },
-    ],
+      "Boissons",
+      "Achats personnels et pourboires"
+    ]
   },
   {
-    id: "ksar-1d",
-    slug: "ksar-ghilane-day-trip",
+    id: "tour-ile-djerba-journee",
+    slug: "tour-ile-djerba-journee",
     category: "excursions",
-    title: "Ksar Ghilane Day Trip",
-    shortDescription: "One-day Sahara escape: oasis, dunes and hot spring.",
-    longDescription:
-      "An epic one-day journey from Djerba into the heart of the Tunisian Sahara. Your adventure begins with an early departure in a 4×4 convoy, crossing the desert gate at Douz before arriving at the legendary Ksar Ghilane oasis — a natural hot spring pool set among towering sand dunes. Swim, ride camels or quads in the dunes, enjoy a Bedouin lunch under a tent, and be back at your hotel before nightfall.",
-    image: ksar1d,
-    images: [ksar1d, ksar2d, excursionDjerba],
-    durationMinutes: 720,
-    durationLabel: "1 day",
-    types: ["adventure", "couple"],
-    badge: "Desert Adventure",
+    title: "EXCURSION TOUR DE L'ILE DE DJERBA UNE JOURNÉE",
+    shortDescription: "Découvrez l'authenticité et la richesse culturelle de Djerba lors d'une journée complète.",
+    longDescription: "Découvrez l'authenticité et la richesse culturelle de Djerba.\n\nProgramme :\n• 07h30 : Prise en charge sur votre lieu de séjour à Djerba.\n• Matinée Culturelle : Visite de la mosquée souterraine, exploration du village et musée de Guelalla, puis visite de la plus ancienne synagogue du Maghreb et découverte des fresques d'Erriadh (DjerbaHood).\n• Déjeuner Repas de Poisson : Pause culinaire dans un restaurant spécialisé pour savourer la cuisine locale.\n• Temps libre à Houmt Souk : Exploration du marché traditionnel, shopping souvenirs et immersion dans la vie locale.\n• Côte Ouest & Côte Sauvage : Visite du site pittoresque de Sidi Jmour et découverte de la côte sauvage.\n• 16h30 : Retour à votre lieu de séjour.",
+    image: excursionDjerba,
+    images: [excursionDjerba],
+    durationMinutes: 540,
+    durationLabel: "Journée complète",
+    types: ["family", "couple"],
+    badge: "Culture",
     active: true,
-    meetingPoint: "Your hotel lobby",
+    meetingPoint: "Prise en charge à votre lieu de séjour",
+    difficulty: "Easy",
+    languages: ["FR", "EN", "IT", "DE"],
+    minAge: 0,
+    options: [{ label: "Adulte", price: 50 }],
+    included: [
+      "Prise en charge et retour à l'hôtel",
+      "Transports",
+      "Visites guidées",
+      "Déjeuner spécialité poissons"
+    ],
+    excluded: [
+      "Boissons autres que l'eau",
+      "Achats personnels et pourboires"
+    ]
+  },
+  {
+    id: "ksar-ghilane-journee",
+    slug: "ksar-ghilane-journee",
+    category: "excursions",
+    title: "EXCURSION DJERBA KSAR GHILANE : UNE JOURNÉE DANS LE DÉSERT DU SAHARA",
+    shortDescription: "Une journée d'aventure inoubliable avec découverte de l'oasis, des dunes et des sources chaudes.",
+    longDescription: "Plongez dans le désert tunisien pour une aventure saharienne d'une journée à Ksar Ghilane.\n\nProgramme :\n1. Départ de Djerba & Chaussée Romaine : Traversée de la voie romaine reliant l'île au continent.\n2. Route vers le Grand Erg Oriental : Traversée des champs d'oliviers et pause café en route vers le désert.\n3. Arrivée à l'Oasis de Ksar Ghilane : Découverte des premières dunes du Sahara.\n4. Déjeuner & Source Chaude : Déjeuner typique au pied des dunes et baignade relaxante dans la source chaude naturelle à 32°C.\n5. Visite du Ksar Hallouf : Découverte d'un très ancien grenier berbère et de son architecture traditionnelle.\n6. Retour à Djerba.",
+    image: ksar1d,
+    images: [ksar1d],
+    durationMinutes: 720,
+    durationLabel: "1 Journée",
+    types: ["adventure", "family", "couple"],
+    badge: "Désert",
+    active: true,
+    meetingPoint: "Prise en charge à votre lieu de séjour",
     difficulty: "Moderate",
     languages: ["FR", "EN", "IT", "DE"],
-    minAge: 8,
-    options: [{ label: "1 day", price: null }],
+    minAge: 5,
+    options: [{ label: "Adulte", price: 65 }],
     included: [
-      "Hotel pickup & drop-off",
-      "4×4 convoy transport",
-      "Licensed desert guide",
-      "Ksar Ghilane hot spring swim",
-      "Bedouin lunch in desert tent",
-      "Camel or quad ride (30 min)",
+      "Transport privé en véhicule 4x4 ou microbus",
+      "Services d'un guide agréé ONTT",
+      "Déjeuner au restaurant au pied des dunes",
+      "Droits d'entrées aux visites prévues"
     ],
     excluded: [
-      "Personal drinks & snacks beyond lunch",
-      "Tips",
-      "Optional quad upgrade (payable on site)",
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Ksar Ghilane Day Trip",
-        steps: [
-          {
-            time: "07:00",
-            label: "Early Departure from Djerba",
-            description: "Pickup from your hotel in an air-conditioned 4×4. Journey south through Tunisian landscapes.",
-          },
-          {
-            time: "09:30",
-            label: "Desert Gate at Douz",
-            description: "Arrive at the gateway to the Sahara. Here the asphalt ends and the sand dunes begin. Switch to off-road mode.",
-          },
-          {
-            time: "11:30",
-            label: "Swim in Ksar Ghilane Hot Spring",
-            description: "Arrive at the legendary oasis. Plunge into the warm natural hot spring pool surrounded by towering golden dunes.",
-          },
-          {
-            time: "13:00",
-            label: "Bedouin Lunch",
-            description: "A traditional Tunisian lunch served in an authentic Bedouin tent — couscous, merguez, fresh salads, and Saharan mint tea.",
-          },
-          {
-            time: "14:30",
-            label: "Camel or Quad Ride in the Dunes",
-            description: "Choose your desert adventure — a slow, majestic camel ride or an exhilarating quad blast across the dunes.",
-          },
-          {
-            time: "18:30",
-            label: "Arrival Back at Hotel",
-            description: "Return journey across the desert, arriving at your Djerba hotel in time for dinner.",
-          },
-        ],
-      },
-    ],
+      "Vols nationaux / internationaux",
+      "Boissons autres que l'eau",
+      "Activités optionnelles en extra",
+      "Pourboires et achats personnels"
+    ]
   },
   {
-    id: "ksar-2d",
-    slug: "ksar-ghilane-2-days",
+    id: "ksar-ghilane-2jours",
+    slug: "ksar-ghilane-2jours",
     category: "excursions",
-    title: "Ksar Ghilane 2 Days",
-    shortDescription: "Two-day desert adventure with Berber camp overnight.",
-    longDescription:
-      "The ultimate Sahara experience — two full days and a magical night under the stars in a traditional Berber desert camp. Day 1 follows the same epic route to Ksar Ghilane, then as the sun sets over the dunes you'll gather around a campfire for a starlit dinner. Day 2 brings a sunrise camel trek, breakfast in the desert, and a leisurely drive back. An unforgettable adventure for all ages.",
+    title: "EXCURSION KSAR GHILANE 2 JOURS ET UNE NUIT DANS LE DÉSERT",
+    shortDescription: "Passez une nuit magique sous les étoiles dans un campement saharien de charme.",
+    longDescription: "L'expérience saharienne ultime avec une nuit sous les étoiles en campement traditionnel berbère.\n\nJOUR 1 : Djerba > Chaussée Romaine > Tataouine > Désert\n• 07h30 : Départ de Djerba en 4x4 privé.\n• Photo au lac salé Sebkhet el Melah.\n• Tataouine & Ksar Ouled Soltane : Visite du marché local et des greniers fortifiés.\n• Déjeuner & Villages Berbères : Repas à Guermassa/Ksar Hadada (décor Star Wars), puis visite guidée du village perché de Chenini.\n• Oasis de Ksar Ghilane : Baignade dans la source chaude à 32°C.\n• Activités optionnelles (sur place) : Quad vers le fort romain Tisavar (30€/h) ou dromadaire dans les dunes (15€/h).\n• Nuit au Campement (Zmela ou similaire) : Transfert dans les dunes, installation en tente privée (vrais lits), cuisson du pain de sable (mella), dîner traditionnel et soirée au coin du feu.\n\nJOUR 2 : Ksar Ghilane > Tamezret > Matmata > Djerba\n• Petit-déjeuner face aux dunes du Sahara.\n• Tamezret : Escale dans ce village berbère et déjeuner authentique chez l'habitant.\n• Matmata : Visite des maisons troglodytiques creusées dans la terre et rencontre avec les habitants.\n• Fin d'après-midi : Retour à Djerba et dépose à votre hôtel, maison d'hôtes ou aéroport.",
     image: ksar2d,
-    images: [ksar2d, ksar1d, excursionDjerba],
+    images: [ksar2d],
     durationMinutes: 2880,
-    durationLabel: "2 days",
-    types: ["adventure", "couple"],
+    durationLabel: "2 Jours / 1 Nuit",
+    types: ["adventure", "couple", "family"],
     badge: "Overnight",
     featured: true,
     active: true,
-    meetingPoint: "Your hotel lobby",
+    meetingPoint: "Prise en charge à votre lieu de séjour",
     difficulty: "Moderate",
-    languages: ["FR", "EN", "IT", "DE", "PL"],
-    minAge: 10,
-    options: [{ label: "2 days", price: null }],
+    languages: ["FR", "EN", "IT", "DE"],
+    minAge: 5,
+    options: [{ label: "Adulte", price: 155 }],
     included: [
-      "Hotel pickup & drop-off",
-      "4×4 transport (both days)",
-      "Licensed desert guide",
-      "Ksar Ghilane hot spring",
-      "Bedouin lunch (Day 1)",
-      "Berber camp overnight stay",
-      "Campfire dinner under the stars",
-      "Sunrise camel trek",
-      "Desert breakfast (Day 2)",
+      "Transport Privé en 4x4 confortable",
+      "Chauffeur-guide agréé ONTT",
+      "Pension Complète (du déjeuner J1 au déjeuner J2, dîner inclus)",
+      "Nuit en campement saharien de charme (tente privée avec vrais lits)",
+      "Toutes les visites mentionnées"
     ],
     excluded: [
-      "Personal alcoholic beverages",
-      "Tips",
-      "Travel insurance",
-      "Charging cables (limited electricity at camp)",
+      "Boissons autres que l'eau",
+      "Activités optionnelles sur place",
+      "Pourboires & achats personnels"
     ],
     itinerary: [
       {
         day: 1,
-        title: "Day 1 — Journey into the Sahara",
+        title: "Djerba > Chaussée Romaine > Tataouine > Désert",
         steps: [
           {
-            time: "07:00",
-            label: "Departure from Djerba",
-            description: "Early pickup from your hotel in a 4×4 convoy. The adventure begins.",
+            time: "07:30",
+            label: "Départ de Djerba",
+            description: "Départ en 4x4 privé."
           },
           {
-            time: "09:30",
-            label: "Desert Gate at Douz",
-            description: "Cross the threshold into the Sahara — tarmac gives way to golden sand.",
+            time: "Matin",
+            label: "Tataouine & Lac Salé",
+            description: "Photo au lac salé Sebkhet el Melah. Visite du marché local de Tataouine et des greniers fortifiés (Ksar Ouled Soltane)."
           },
           {
-            time: "11:30",
-            label: "Ksar Ghilane Hot Spring",
-            description: "Swim in the warm natural oasis pool, surrounded by towering dunes.",
+            time: "Midi",
+            label: "Villages Berbères",
+            description: "Repas à Guermassa/Ksar Hadada (décor Star Wars), puis visite guidée du village perché de Chenini."
           },
           {
-            time: "13:00",
-            label: "Bedouin Lunch",
-            description: "Traditional Tunisian feast in a desert tent — couscous, grilled meats, and mint tea.",
+            time: "Après-midi",
+            label: "Oasis de Ksar Ghilane",
+            description: "Baignade dans la source chaude à 32°C. Possibilité d'activités optionnelles (quad, dromadaire)."
           },
           {
-            time: "15:00",
-            label: "Quad & Camel Ride in the Dunes",
-            description: "Free time to explore the dunes by quad or camel.",
-          },
-          {
-            time: "18:00",
-            label: "Check-in to Berber Desert Camp",
-            description: "Settle into your traditional Berber tent — lanterns, rugs, and all the ambiance of the Sahara.",
-          },
-          {
-            time: "20:30",
-            label: "Campfire Dinner Under the Stars",
-            description: "Gather around the fire for a Berber dinner as the Milky Way appears overhead.",
-          },
-        ],
+            time: "Soir",
+            label: "Nuit au Campement",
+            description: "Transfert dans les dunes, installation en tente privée. Cuisson du pain de sable (mella), dîner traditionnel et soirée au coin du feu."
+          }
+        ]
       },
       {
         day: 2,
-        title: "Day 2 — Sunrise & Return",
+        title: "Ksar Ghilane > Tamezret > Matmata > Djerba",
         steps: [
           {
-            time: "06:00",
-            label: "Sunrise Camel Trek",
-            description: "Rise before dawn and ride into the dunes to watch the Sahara sun rise in silence.",
+            time: "Matin",
+            label: "Réveil saharien",
+            description: "Petit-déjeuner face aux dunes du Sahara."
           },
           {
-            time: "08:00",
-            label: "Desert Breakfast",
-            description: "Fresh bread, olive oil, honey, cheese and coffee served at camp.",
+            time: "Midi",
+            label: "Tamezret",
+            description: "Escale dans le village berbère de Tamezret et déjeuner authentique chez l'habitant."
           },
           {
-            time: "09:30",
-            label: "Visit Ksar Ghilane Ruins",
-            description: "Explore the ancient Roman fort ruins at the edge of the oasis.",
+            time: "Après-midi",
+            label: "Matmata",
+            description: "Visite des maisons troglodytiques creusées dans la terre et rencontre avec les habitants."
           },
           {
-            time: "11:00",
-            label: "Return Journey Begins",
-            description: "Load up the 4×4s and head north through the desert back toward Djerba.",
-          },
-          {
-            time: "15:00",
-            label: "Arrival at Hotel",
-            description: "Return to your hotel with memories that will last a lifetime.",
-          },
-        ],
-      },
-    ],
-  },
+            time: "Fin de journée",
+            label: "Retour",
+            description: "Retour à Djerba et dépose à votre hôtel, maison d'hôtes ou aéroport."
+          }
+        ]
+      }
+    ]
+  }
+
 ];
 
 interface ActivitiesContextValue {
